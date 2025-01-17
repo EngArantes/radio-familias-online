@@ -1,4 +1,3 @@
-/* Banner principal */
 .banner-principal {
   width: 100%; /* O banner ocupa toda a largura da tela */
   display: flex;
@@ -14,15 +13,13 @@
   object-fit: cover; /* Mantém a proporção da imagem e cobre todo o espaço disponível */
 }
 
-/* Responsividade para telas menores que 768px */
+/* Responsividade para telas menores */
 @media (max-width: 768px) {
   .banner-image {
     max-height: none; /* Remove o limite de altura para dispositivos móveis */
-    height: auto; /* Garante que a altura continue proporcional */
   }
 }
 
-/* Responsividade para telas menores que 480px */
 @media (max-width: 480px) {
   .banner-principal {
     padding: 0; /* Remove espaçamentos extras no container para telas muito pequenas */
@@ -31,14 +28,5 @@
   .banner-image {
     width: 100%; /* Garante que ocupe a largura total */
     height: auto; /* Altura proporcional à largura */
-    object-fit: contain; /* Ajuste o object-fit para 'contain' em telas pequenas para evitar corte da imagem */
-  }
-}
-
-/* Responsividade para telas menores que 427px */
-@media (max-width: 427px) {
-  .banner-image {
-    object-fit: contain; /* Certifique-se de que a imagem se ajuste sem cortar */
-    height: auto; /* Manter a proporção da altura */
   }
 }

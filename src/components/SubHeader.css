@@ -32,21 +32,16 @@ body {
 /* Responsividade para telas menores que 768px */
 @media (max-width: 768px) {
   .SubHeader {
-    flex-direction: column;
-    align-items: center;
-    padding: 10px 0;
-  }
+  max-width: 100%; /* Garante que o SubHeader não fique maior que a tela */
+  padding: 10px 5%; /* Adiciona espaçamento proporcional */
+}
+
 
   .logomarcaTop {
-    height: 10vh;
-    padding-left: 0;
-    margin: 10px 0;
+    margin-left: 0; /* Remove margens desnecessárias */
   }
-
   .logomarcaDivino {
-    width: 120px;
-    margin: 10px 0;
-    padding-right: 0;
+    margin-right: 0; /* Remove margens desnecessárias */
   }
 }
 

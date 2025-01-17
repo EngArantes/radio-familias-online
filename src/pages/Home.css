@@ -1,5 +1,6 @@
+/* Estilos gerais */
 .home {
-  text-align: center;  
+  text-align: center;
 }
 
 .home h1 {
@@ -14,25 +15,24 @@
   margin-bottom: 20px;
 }
 
-
+/* Player de rádio */
 .player {
-  position: relative; /* Define a posição de referência para elementos filhos */
-  z-index: 1; /* Garante que o player fique abaixo da imagem sobreposta */
-  margin: 0 auto; /* Centraliza o player */
-  text-align: center; /* Garante que o conteúdo fique centralizado */
-  margin-bottom: 100px; /* Adiciona espaçamento inferior */
+  position: relative;
+  z-index: 1;
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 100px;
   background-image: url("../radio.png");
   padding: 100px;
-  background-size:cover;
+  background-size: cover;
   background-repeat: no-repeat;
 }
 
-.textoPlay{
+.textoPlay {
   color: #E73969;
   background-color: #f1f1f1;
   padding: 5px;
 }
-
 
 /* Banner principal */
 .bannerT {
@@ -56,47 +56,59 @@
 /* Layout das 3 colunas */
 .content-grid {
   display: grid;
-  grid-template-columns: 1.5fr 2.5fr 1.5fr; /* Colunas laterais um pouco maiores */
-  
+  grid-template-columns: 1.5fr 2.5fr 1.5fr;
+  gap: 20px;
 }
 
 .sidebar {
-  background-color: #f1f1f1; /* Cor de fundo para as colunas laterais */
+  background-color: #f1f1f1;
   padding: 20px;
 }
 
 .sidebar img {
-  width: 100%; /* Propagandas ocuparão toda a largura da coluna */
+  width: 100%;
 }
 
 /* Responsividade para dispositivos móveis */
 @media (max-width: 768px) {
   .content-grid {
-    grid-template-columns: 1fr; /* Uma única coluna em telas pequenas */
-  }
-
-  .colunaCentral{
-    width: 100%;
+    grid-template-columns: 1fr; /* Layout em uma única coluna */
+    gap: 0; /* Remove o espaço entre as colunas */
   }
 
   .sidebar {
-    display: none; /* Esconde as sidebars em dispositivos móveis */
+    display: none; /* Esconde as colunas laterais */
   }
 
   .bannerT {
-    width: 100%; /* Ajusta o tamanho do banner principal em telas pequenas */
-    margin: 0 auto; /* Centraliza o banner */
+    width: 100%;
+    margin: 0 auto;
   }
+
+  .player {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-size: contain; /* Ajusta a imagem de fundo para telas menores */
+  }
+
+  .TituloVideosDestaque {
+    font-size: 1.5rem;
+    padding: 15px;
+  }
+
+  
 }
 
-/* Responsividade adicional para tablets */
+
+
+/* Responsividade para tablets */
 @media (max-width: 1024px) {
   .content-grid {
     gap: 15px; /* Ajusta o espaço entre colunas */
   }
 
   .bannerT {
-    width: 70%; /* Ajusta o tamanho do banner em tablets */
+    width: 70%;
   }
 }
 

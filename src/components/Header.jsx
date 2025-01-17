@@ -19,6 +19,11 @@ function Header() {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  // Função para fechar o menu ao clicar no link
+  const handleLinkClick = () => {
+    setIsMenuOpen(false); // Fecha o menu
+  };
+
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
@@ -46,11 +51,11 @@ function Header() {
         </button>
         <nav>
           <ul className={`nav-links ${isMenuOpen ? 'show' : ''}`}>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/videos-gallery">Vídeos</Link></li>
-            <li><Link to="/contato">Contato</Link></li>
+            <li><Link to="/" onClick={handleLinkClick}>Home</Link></li>
+            <li><Link to="/videos-gallery" onClick={handleLinkClick}>Vídeos</Link></li>
+            <li><Link to="/contato" onClick={handleLinkClick}>Contato</Link></li>
             {currentUser && (
-              <li><Link to="/dashboard" className="nav-link">Dashboard</Link></li>
+              <li><Link to="/dashboard" className="nav-link" onClick={handleLinkClick}>Dashboard</Link></li>
             )}
             {currentUser ? (
               <li><button onClick={handleLogout} className="login-button">Sair</button></li>

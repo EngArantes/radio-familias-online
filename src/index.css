@@ -14,3 +14,15 @@ code {
     monospace;
 }
 
+/* Limita o tamanho da tela a 427px */
+@media (max-width: 427px) {
+  body {
+    overflow-x: hidden; /* Impede o deslocamento horizontal caso a tela seja menor */
+  }
+
+  .App {
+    width: 100%; /* Ajusta a largura do container principal */
+    max-width: 427px; /* Define a largura máxima da tela */
+    margin: 0 auto; /* Centraliza o conteúdo */
+  }
+}

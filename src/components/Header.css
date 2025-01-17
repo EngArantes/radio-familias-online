@@ -58,6 +58,7 @@
   }
 
   .menu-button {
+    width: 10%;
     background: none;
     border: none;
     color: white;
@@ -65,12 +66,15 @@
     cursor: pointer;
     z-index: 1000;
   }
-
+  .header {
+    padding: 10px 5%; /* Reduz o espaçamento lateral */
+  }
   
 }
 
 @media (min-width: 768px) {
   .menu-button {
+    width: 10%;
     flex-direction: column;
     gap: 20px;
     background-color: #21115C;
@@ -83,7 +87,6 @@
   }
 
   
-
   
 }
 
