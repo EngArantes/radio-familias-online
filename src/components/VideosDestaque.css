@@ -31,30 +31,38 @@
 .video-title {
   margin-top: 10px;
   font-size: 1rem;
-  color: #ffffff;
+  color: #333; /* Ajustei a cor para garantir melhor visibilidade */
   text-align: center;
 }
 
 /* Responsividade */
 
+/* Para telas grandes, como desktops */
 @media (max-width: 1200px) {
   .video-grid {
     grid-template-columns: repeat(3, 1fr); /* 3 colunas em telas médias */
   }
 }
 
+/* Para tablets e telas menores que 900px */
 @media (max-width: 900px) {
   .video-grid {
     grid-template-columns: repeat(2, 1fr); /* 2 colunas em telas pequenas */
   }
 }
 
+/* Para dispositivos móveis com telas menores que 600px */
 @media (max-width: 600px) {
   .video-grid {
-    grid-template-columns: repeat(1, 1fr); 
+    grid-template-columns: repeat(1, 1fr); /* 1 coluna em telas muito pequenas */
   }
 
   .video-card iframe {
-    height: 150px; /* Ajusta a altura dos vídeos */
+    height: 150px; /* Ajusta a altura dos vídeos para telas menores */
+  }
+
+  /* Ajuste no título do vídeo para melhorar a legibilidade */
+  .video-title {
+    font-size: 0.9rem; /* Reduz o tamanho da fonte em telas pequenas */
   }
 }
