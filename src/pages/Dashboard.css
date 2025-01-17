@@ -1,0 +1,46 @@
+.dashboard {
+  padding: 20px;
+  text-align: center;
+}
+
+.dashboard-columns {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px; /* Espaçamento entre as colunas */
+  margin-top: 20px;
+}
+
+.column {
+  flex: 1; /* Faz as colunas terem tamanhos iguais */
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.column h2 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.column p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .dashboard-columns {
+    flex-direction: column; /* Empilha as colunas no mobile */
+    gap: 15px; /* Reduz o espaçamento no mobile */
+  }
+
+  .column {
+    flex: 1 1 100%; /* Cada coluna ocupa toda a largura disponível */
+  }
+}

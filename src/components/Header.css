@@ -1,0 +1,89 @@
+.header {
+  background-color: #21115C;
+  padding: 20px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  margin: 0;
+  padding: 0;
+}
+
+#email, #password{
+  width: 90%;
+}
+
+.nav-links li a, 
+.nav-links li button {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: large;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+}
+
+.nav-links li a:hover, 
+.nav-links li button:hover {
+  text-decoration: underline;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column;
+    gap: 20px;
+    background-color: #222222;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    display: none; /* Esconde o menu inicialmente */
+    padding: 20px 0;
+  }
+
+  .nav-links.show {
+    display: flex; /* Exibe o menu quando ativado */
+  }
+
+  .menu-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.8rem;
+    cursor: pointer;
+    z-index: 1000;
+  }
+
+  
+}
+
+@media (min-width: 768px) {
+  .menu-button {
+    flex-direction: column;
+    gap: 20px;
+    background-color: #21115C;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    display: none; /* Esconde o menu inicialmente */
+    padding: 20px 0;
+  }
+
+  
+
+  
+}
+

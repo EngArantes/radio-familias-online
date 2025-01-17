@@ -1,0 +1,161 @@
+.home {
+  text-align: center;  
+}
+
+.home h1 {
+  color: #333;
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.home p {
+  font-size: 1.2em;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+
+.player {
+  position: relative; /* Define a posição de referência para elementos filhos */
+  z-index: 1; /* Garante que o player fique abaixo da imagem sobreposta */
+  margin: 0 auto; /* Centraliza o player */
+  text-align: center; /* Garante que o conteúdo fique centralizado */
+  margin-bottom: 100px; /* Adiciona espaçamento inferior */
+  background-image: url("../radio.png");
+  padding-bottom: 70px;
+  background-size:contain;
+}
+
+.textoPlay{
+  color: #E73969;
+  background-color: #f1f1f1;
+  padding: 5px;
+}
+
+
+/* Banner principal */
+.bannerT {
+  width: 60vw;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Vídeos em destaque */
+.videos-destaque {
+  display: flex;
+  justify-content: center;
+}
+
+.TituloVideosDestaque {
+  background-color: #1B1B1B;
+  padding: 20px;
+  color: white;
+}
+
+/* Layout das 3 colunas */
+.content-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 2.5fr 1.5fr; /* Colunas laterais um pouco maiores */
+  gap: 20px;
+  padding: 20px;
+}
+
+.sidebar {
+  background-color: #f1f1f1; /* Cor de fundo para as colunas laterais */
+  padding: 20px;
+}
+
+.sidebar img {
+  width: 100%; /* Propagandas ocuparão toda a largura da coluna */
+}
+
+/* Responsividade para dispositivos móveis */
+@media (max-width: 768px) {
+  .content-grid {
+    grid-template-columns: 1fr; /* Uma única coluna em telas pequenas */
+  }
+
+  .sidebar {
+    display: none; /* Esconde as sidebars em dispositivos móveis */
+  }
+
+  .bannerT {
+    width: 90%; /* Ajusta o tamanho do banner principal em telas pequenas */
+    margin: 0 auto; /* Centraliza o banner */
+  }
+}
+
+/* Responsividade adicional para tablets */
+@media (max-width: 1024px) {
+  .content-grid {
+    gap: 15px; /* Ajusta o espaço entre colunas */
+  }
+
+  .bannerT {
+    width: 70%; /* Ajusta o tamanho do banner em tablets */
+  }
+}
+
+/* Formulário de mensagens */
+.form-message {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-message h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.form-group textarea {
+  resize: vertical;
+  height: 150px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #21115C;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #1a0e4f;
+}
+
+.success-message {
+  color: green;
+  font-size: 1.1em;
+  text-align: center;
+  margin-top: 20px;
+}

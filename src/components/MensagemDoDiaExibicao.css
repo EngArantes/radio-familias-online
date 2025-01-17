@@ -1,0 +1,108 @@
+.mensagem-do-dia {
+  width: 90%;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 10px;
+  background-color: #f3f4f6;
+  border-left: 6px solid #E73969;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  animation: slideIn 0.5s ease-out;
+  text-align: center;
+  color: #333;
+  font-family: 'Arial', sans-serif;
+  position: relative;
+}
+
+.mensagem-do-dia h2 {
+  font-size: 1.8rem;
+  color: #E73969;
+  font-weight: bold;
+  margin-bottom: 5%;
+  text-transform: uppercase;
+}
+
+.mensagem-do-dia p {
+  font-size: 1.2rem;
+  color: #555;
+  line-height: 1.6;
+  margin-top: 10px;
+}
+
+.mensagem-do-dia::before {
+  content: "💬";
+  font-size: 2rem;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.mensagem-do-dia .nota {
+  font-size: 0.9rem;
+  color: #888;
+  margin-top: 15px;
+}
+
+/* Responsividade para telas pequenas */
+@media (max-width: 768px) {
+  .mensagem-do-dia {
+    width: 95%; /* Largura mais ampla em telas menores */
+    padding: 15px; /* Aumenta o padding para telas pequenas */
+  }
+
+  .mensagem-do-dia h2 {
+    font-size: 1.5rem; /* Reduz o tamanho do título em telas pequenas */
+    margin-bottom: 4%;
+  }
+
+  .mensagem-do-dia p {
+    font-size: 1rem; /* Ajusta o tamanho da fonte do parágrafo */
+  }
+
+  .mensagem-do-dia::before {
+    font-size: 1.8rem; /* Diminui o ícone na frente do texto */
+    top: 15px;
+    left: 10px;
+  }
+
+  .mensagem-do-dia .nota {
+    font-size: 0.8rem; /* Reduz a fonte da nota */
+  }
+}
+
+/* Responsividade para telas muito pequenas */
+@media (max-width: 480px) {
+  .mensagem-do-dia {
+    width: 100%; /* Largura total da tela */
+    padding: 10px; /* Padding reduzido em telas muito pequenas */
+  }
+
+  .mensagem-do-dia h2 {
+    font-size: 1.3rem; /* Fonte do título ainda menor */
+  }
+
+  .mensagem-do-dia p {
+    font-size: 0.9rem; /* Fonte do parágrafo ajustada para telas muito pequenas */
+  }
+
+  .mensagem-do-dia::before {
+    font-size: 1.6rem; /* Ícone ainda menor */
+    top: 10px;
+    left: 5px;
+  }
+
+  .mensagem-do-dia .nota {
+    font-size: 0.7rem; /* Fonte da nota menor */
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

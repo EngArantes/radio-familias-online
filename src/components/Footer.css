@@ -1,0 +1,56 @@
+.footer {
+  background-color: #21115C;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px; /* Adiciona espaçamento lateral em telas menores */
+}
+
+.social-links {
+  margin-bottom: 10px;
+  display: flex; /* Torna os links flexíveis */
+  justify-content: center; /* Centraliza os links */
+  flex-wrap: wrap; /* Permite que os links quebrem linha em telas menores */
+  gap: 15px; /* Espaçamento entre os links */
+}
+
+.social-links a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+  font-size: 1.2rem; /* Tamanho da fonte ajustado */
+}
+
+.social-links a:hover {
+  color: #ff5c8d; /* Cor de destaque no hover */
+}
+
+.footer p {
+  margin-top: 10px;
+  font-size: 0.9em;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .footer-content {
+    padding: 0 10px; /* Reduz o espaçamento lateral em telas menores */
+  }
+
+  .social-links {
+    gap: 10px; /* Reduz o espaçamento entre os links */
+  }
+
+  .social-links a {
+    font-size: 1rem; /* Ajusta o tamanho da fonte dos links */
+  }
+
+  .footer p {
+    font-size: 0.8em; /* Reduz o tamanho da fonte do texto no rodapé */
+  }
+}

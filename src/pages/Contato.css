@@ -1,0 +1,58 @@
+.form-message {
+  width: 80%;
+  margin: 10px auto;
+  background-color: #d8d8d8;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: block;
+}
+
+.form-message h2 {
+  font-size: 1.5rem;
+  color: #333;
+  text-align: center;
+}
+
+.form-message form {
+  gap: 15px;
+  margin-left: 20px;
+}
+
+.form-message input[type="text"],
+.form-message textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 90%;
+  font-size: 1rem;
+  outline: none;
+}
+
+.form-message button {
+  padding: 10px;
+  background-color: #E73969;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 95%;
+}
+
+.form-message button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.form-message button:not(:disabled):hover {
+  background-color: #cc174a;
+}
+
+.form-message p {
+  margin-top: 10px;
+  color: #555;
+  font-size: 0.9rem;
+  text-align: center;
+}

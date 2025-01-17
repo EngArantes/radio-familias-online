@@ -1,0 +1,62 @@
+body {
+  margin: 0; /* Remove margens padrão do body */
+  padding: 0; /* Remove qualquer padding padrão */
+  box-sizing: border-box; /* Inclui padding e border no cálculo do tamanho */
+}
+
+.SubHeader {
+  background-color: #000000;
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: space-between; /* Distribui os elementos com espaço entre eles */
+  align-items: center;
+  flex-wrap: wrap; /* Permite que os itens quebrem linha em telas menores */
+  padding: 10px 20px; /* Adiciona espaçamento interno */
+}
+
+.logomarcaTop {
+  height: 12vh;
+  margin: 0;
+  padding-left: 0; /* Remove margens rígidas */
+  margin-left: 100px;
+}
+
+.logomarcaDivino {
+  width: 150px;
+  padding-right: 0; /* Remove margens rígidas */
+  margin-right: 100px;
+}
+
+/* Responsividade para telas menores que 768px */
+@media (max-width: 768px) {
+  .SubHeader {
+    flex-direction: column; /* Alinha os itens em coluna */
+    align-items: center; /* Centraliza os itens */
+    padding: 10px 0;
+  }
+
+  .logomarcaTop {
+    height: 10vh; /* Reduz a altura da logo */
+    padding-left: 0; /* Remove padding em telas pequenas */
+    margin: 10px 0; /* Adiciona margem vertical */
+  }
+
+  .logomarcaDivino {
+    width: 120px; /* Reduz o tamanho da imagem */
+    margin: 10px 0; /* Centraliza a imagem */
+    padding-right: 0; /* Remove padding lateral */
+  }
+}
+
+/* Responsividade para telas menores que 480px */
+@media (max-width: 480px) {
+  .logomarcaTop {
+    height: 8vh; /* Reduz ainda mais a altura da logo */
+    margin: 10px 0; /* Ajusta o espaçamento */
+  }
+
+  .logomarcaDivino {
+    width: 100px; /* Reduz o tamanho da imagem */
+    margin: 10px 0; /* Ajusta o espaçamento */
+  }
+}

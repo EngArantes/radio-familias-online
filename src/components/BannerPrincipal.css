@@ -1,0 +1,32 @@
+.banner-principal {
+  width: 100%; /* O banner ocupa toda a largura da tela */
+  display: flex;
+  justify-content: center; /* Centraliza o conteúdo horizontalmente */
+  align-items: center; /* Centraliza o conteúdo verticalmente */
+  background-color: #f5f5f5; /* Cor de fundo caso a imagem não carregue */
+  overflow: hidden; /* Evita que o conteúdo ultrapasse os limites */
+}
+
+.banner-image {
+  width: 100%; /* A imagem ocupa toda a largura disponível */
+  height: auto; /* Ajusta a altura proporcional à largura */
+  object-fit: cover; /* Mantém a proporção da imagem e cobre todo o espaço disponível */
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+  .banner-image {
+    max-height: none; /* Remove o limite de altura para dispositivos móveis */
+  }
+}
+
+@media (max-width: 480px) {
+  .banner-principal {
+    padding: 0; /* Remove espaçamentos extras no container para telas muito pequenas */
+  }
+
+  .banner-image {
+    width: 100%; /* Garante que ocupe a largura total */
+    height: auto; /* Altura proporcional à largura */
+  }
+}
