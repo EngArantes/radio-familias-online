@@ -1,6 +1,6 @@
 /* Estilos gerais */
 .home {
-  text-align: center;
+  text-align: center;  
 }
 
 .home h1 {
@@ -17,15 +17,14 @@
 
 /* Player de rádio */
 .player {
-  position: relative;
   z-index: 1;
   margin: 0 auto;
   text-align: center;
-  margin-bottom: 100px;
+  margin-bottom: 80px;
   background-image: url("../radio.png");
   padding: 100px;
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-size: contain;
+  background-repeat: repeat;
 }
 
 .textoPlay {
@@ -87,8 +86,8 @@
 
   .player {
     margin-bottom: 30px;
-    padding: 20px;
-    background-size: contain; /* Ajusta a imagem de fundo para telas menores */
+    padding: 10px;
+    background-size:cover; /* Ajusta a imagem de fundo para telas menores */
   }
 
   .TituloVideosDestaque {
@@ -99,7 +98,12 @@
   
 }
 
-
+@media (max-width: 480px) {
+  
+  .player {
+    background-size:contain; /* Ajusta a imagem de fundo para telas menores */
+  }
+}
 
 /* Responsividade para tablets */
 @media (max-width: 1024px) {
@@ -110,6 +114,7 @@
   .bannerT {
     width: 70%;
   }
+  
 }
 
 /* Formulário de mensagens */
