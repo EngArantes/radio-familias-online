@@ -13,16 +13,96 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
 /* Limita o tamanho da tela a 427px */
 @media (max-width: 427px) {
   body {
-    overflow-x: hidden; /* Impede o deslocamento horizontal caso a tela seja menor */
+    overflow-x: hidden; /* Evita o scroll horizontal */
+    margin: 0;
+    padding: 0;
   }
 
   .App {
-    width: 100%; /* Ajusta a largura do container principal */
-    max-width: 427px; /* Define a largura máxima da tela */
-    margin: 0 auto; /* Centraliza o conteúdo */
+    width: 100%; /* Garante que o container ocupe a largura total da tela */
+    max-width: 427px; /* Define a largura máxima para iPhone 6 */
+    margin: 0 auto; /* Centraliza o conteúdo na tela */
+  }
+
+  /* Ajustes gerais para textos e títulos */
+  h1, h2, h3, p {
+    font-size: 1rem; /* Ajusta o tamanho da fonte para dispositivos menores */
+    margin: 10px 15px; /* Adiciona espaçamento adequado */
+  }
+
+  /* Player de rádio */
+  .player {
+    padding: 20px; /* Reduz o padding interno */
+    background-size: contain; /* Ajusta o tamanho do fundo */
+    margin-bottom: 30px; /* Reduz o espaçamento inferior */
+  }
+
+  .textoPlay {
+    font-size: 0.9rem; /* Ajusta o texto do player */
+    padding: 10px;
+  }
+
+  /* Banner principal */
+  .bannerT {
+    width: 100%; /* Garante que o banner ocupe toda a largura disponível */
+    max-width: 427px; /* Restringe ao tamanho da tela do iPhone 6 */
+    height: auto;
+    margin: 0 auto; /* Centraliza o banner */
+  }
+
+  /* Layout de colunas */
+  .content-grid {
+    grid-template-columns: 1fr; /* Transforma o layout em uma única coluna */
+    gap: 10px; /* Ajusta o espaço entre os elementos */
+  }
+
+  .sidebar {
+    display: none; /* Oculta as barras laterais em telas pequenas */
+  }
+
+  /* Vídeos em destaque */
+  .videos-destaque {
+    flex-direction: column; /* Alinha os vídeos verticalmente */
+    gap: 15px; /* Adiciona espaçamento entre os vídeos */
+    padding: 10px;
+  }
+
+  .TituloVideosDestaque {
+    font-size: 1.2rem;
+    padding: 10px;
+  }
+
+  /* Formulários e botões */
+  .form-message {
+    width: 90%; /* Reduz a largura do formulário */
+    padding: 15px;
+    margin: 0 auto; /* Centraliza o formulário */
+  }
+
+  .form-group input,
+  .form-group textarea {
+    font-size: 0.9rem; /* Ajusta o tamanho da fonte */
+  }
+
+  button {
+    font-size: 0.9rem; /* Reduz o tamanho do botão */
+    padding: 10px;
+  }
+
+  /* Ajustes finais */
+  img {
+    max-width: 100%; /* Garante que as imagens não ultrapassem a largura da tela */
+    height: auto;
+  }
+
+  .TituloVideosDestaque {
+    background-color: #1B1B1B;
+    color: white;
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
   }
 }

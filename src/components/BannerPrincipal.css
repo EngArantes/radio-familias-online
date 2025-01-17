@@ -16,7 +16,7 @@
 /* Responsividade para telas menores */
 @media (max-width: 768px) {
   .banner-image {
-    max-height: none; /* Remove o limite de altura para dispositivos móveis */
+    max-height: 300px; /* Remove o limite de altura para dispositivos móveis */
   }
 }
 
