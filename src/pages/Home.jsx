@@ -27,7 +27,7 @@ function Home() {
         <LeftBanner />
 
         {/* Coluna Central */}
-        <div className="video-column">
+        <div className="colunaCentral">
 
           <BannerPrincipal />
           <h2>Evangelizando através das ondas da internet!</h2>

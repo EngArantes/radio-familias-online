@@ -22,8 +22,9 @@
   text-align: center; /* Garante que o conteúdo fique centralizado */
   margin-bottom: 100px; /* Adiciona espaçamento inferior */
   background-image: url("../radio.png");
-  padding-bottom: 70px;
-  background-size:contain;
+  padding: 100px;
+  background-size:cover;
+  background-repeat: no-repeat;
 }
 
 .textoPlay{
@@ -56,8 +57,7 @@
 .content-grid {
   display: grid;
   grid-template-columns: 1.5fr 2.5fr 1.5fr; /* Colunas laterais um pouco maiores */
-  gap: 20px;
-  padding: 20px;
+  
 }
 
 .sidebar {
@@ -75,12 +75,16 @@
     grid-template-columns: 1fr; /* Uma única coluna em telas pequenas */
   }
 
+  .colunaCentral{
+    width: 100%;
+  }
+
   .sidebar {
     display: none; /* Esconde as sidebars em dispositivos móveis */
   }
 
   .bannerT {
-    width: 90%; /* Ajusta o tamanho do banner principal em telas pequenas */
+    width: 100%; /* Ajusta o tamanho do banner principal em telas pequenas */
     margin: 0 auto; /* Centraliza o banner */
   }
 }
