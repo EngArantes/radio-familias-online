@@ -44,6 +44,7 @@
 .videos-destaque {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .TituloVideosDestaque {

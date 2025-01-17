@@ -19,7 +19,7 @@ body {
 .logomarcaTop {
   height: 12vh;
   margin: 0;
-  padding-left: 0;
+  padding-left: 100px;
   margin-left: 100px;
 }
 
@@ -38,10 +38,10 @@ body {
 
 
   .logomarcaTop {
-    margin-left: 0; /* Remove margens desnecessárias */
+    margin-left: 0; 
   }
   .logomarcaDivino {
-    margin-right: 0; /* Remove margens desnecessárias */
+    margin-right: 0; 
   }
 }
 
