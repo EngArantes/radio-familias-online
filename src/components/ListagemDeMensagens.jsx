@@ -52,7 +52,7 @@ const ListagemDeMensagens = () => {
           <thead>
             <tr>
               <th>Nome</th>
-              <th>Título</th>
+              <th>Email</th>
               <th>Abrir</th>
               <th>Deletar</th>
             </tr>
@@ -61,7 +61,7 @@ const ListagemDeMensagens = () => {
             {mensagens.slice(0, 6).map((mensagem) => (
               <tr key={mensagem.id}>
                 <td>{mensagem.nome}</td>
-                <td>{mensagem.titulo}</td>
+                <td>{mensagem.email}</td>
                 <td>
                   <button onClick={() => abrirMensagem(mensagem)}>Abrir</button>                
                 </td>

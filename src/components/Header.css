@@ -22,6 +22,14 @@
   width: 90%;
 }
 
+.close-button{
+  background-color: #8b8b8b;
+}
+
+.modal-content h2{
+  text-align: center;
+}
+
 .nav-links li a, 
 .nav-links li button {
   color: white;

@@ -5,7 +5,7 @@ import './Contato.css';
 
 const Contato = () => {
   const [nome, setNome] = useState('');
-  const [titulo, setTitulo] = useState('');
+  const [email, setEmail] = useState('');
   const [mensagem, setMensagem] = useState('');
 
   // Função para enviar a mensagem
@@ -13,7 +13,7 @@ const Contato = () => {
     e.preventDefault();
 
     // Verificando se os campos estão preenchidos
-    if (!nome || !titulo || !mensagem) {
+    if (!nome || !email || !mensagem) {
       alert("Por favor, preencha todos os campos.");
       return;
     }
@@ -23,14 +23,14 @@ const Contato = () => {
       const mensagensRef = collection(db, "Mensagens-recebidas");
       await addDoc(mensagensRef, {
         nome,
-        titulo,
+        email,
         mensagem,
         data: new Date(),
       });
 
       // Limpa os campos após o envio
       setNome('');
-      setTitulo('');
+      setEmail('');
       setMensagem('');
       alert("Mensagem enviada com sucesso!");
     } catch (error) {
@@ -62,12 +62,12 @@ const Contato = () => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="title">Título:</label>
+          <label htmlFor="title">Email:</label>
           <input
-            type="text"
-            id="title"
-            value={titulo}
-            onChange={(e) => setTitulo(e.target.value)}
+            type="email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
 
