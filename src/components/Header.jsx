@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Header.css';
 import { useAuth } from '../contexts/AuthContext';
+import Player from '../components/Player';
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -54,6 +55,7 @@ function Header() {
             <li><Link to="/" onClick={handleLinkClick}>Home</Link></li>
             <li><Link to="/videos-gallery" onClick={handleLinkClick}>Vídeos</Link></li>
             <li><Link to="/contato" onClick={handleLinkClick}>Contato</Link></li>
+              
             {currentUser && (
               <li><Link to="/dashboard" className="nav-link" onClick={handleLinkClick}>Dashboard</Link></li>
             )}
@@ -62,9 +64,13 @@ function Header() {
             ) : (
               <li><button onClick={toggleModal} className="login-button">Login</button></li>
             )}
+            
           </ul>
+          
         </nav>
+        <Player/>
       </header>
+
 
       {showModal && (
         <div className="modal-overlay" onClick={toggleModal}>

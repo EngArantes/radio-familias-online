@@ -20,13 +20,11 @@ body {
   height: 12vh;
   margin: 0;
   padding-left: 100px;
-  margin-left: 100px;
 }
 
 .logomarcaDivino {
   width: 150px;
   padding-right: 0;
-  margin-right: 100px;
 }
 
 /* Responsividade para telas menores que 768px */
