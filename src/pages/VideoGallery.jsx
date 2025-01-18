@@ -42,16 +42,25 @@ const VideoGallery = () => {
   const handleDelete = async () => {
     try {
       if (videoToDelete) {
+        // Remove o vídeo da coleção "videos"
         const videoDoc = doc(db, "videos", videoToDelete);
         await deleteDoc(videoDoc);
+  
+        // Remove o vídeo da coleção "VideosDestaque" se existir
+        const featuredDoc = doc(db, "VideosDestaque", videoToDelete);
+        await deleteDoc(featuredDoc);
+  
+        // Atualiza o estado local
         setVideos(videos.filter(video => video.id !== videoToDelete));
         setFilteredVideos(filteredVideos.filter(video => video.id !== videoToDelete));
+  
         setShowModal(false); // Fecha a modal após a exclusão
       }
     } catch (error) {
       console.error("Erro ao excluir o vídeo:", error);
     }
   };
+  
 
   const handleCancel = () => {
     setShowModal(false); // Fecha a modal se o usuário cancelar
