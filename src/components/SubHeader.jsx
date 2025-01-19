@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './SubHeader.css';
-import Logomarca from '../logomarca_vazada.png';
+import Logomarca from '../logomarca_fundo_azul.png';
 import LogomarcaDivino from '../logo_divino.png';
 
 function Header() {

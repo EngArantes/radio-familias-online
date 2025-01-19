@@ -5,26 +5,27 @@ body {
 }
 
 .SubHeader {
-  background-color: #000000;
+  background-image: url("../vitrais.png");
+  background-size: cover;
   padding-bottom: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  padding: 10px 20px;
+  padding: 20px;
   width: 100%; /* Garante que o SubHeader ocupe toda a largura da tela */
   box-sizing: border-box; /* Garante que o padding não ultrapasse a largura da tela */
 }
 
 .logomarcaTop {
-  height: 12vh;
+  height: 13vh;
   margin: 0;
   padding-left: 100px;
 }
 
 .logomarcaDivino {
-  width: 150px;
-  padding-right: 0;
+  height: 13vh;
+  padding-right: 100px;
 }
 
 /* Responsividade para telas menores que 768px */

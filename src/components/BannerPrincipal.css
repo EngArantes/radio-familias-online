@@ -1,16 +1,16 @@
 .banner-principal {
-  width: 100%; /* O banner ocupa toda a largura da tela */
-  display: flex;
-  justify-content: center; /* Centraliza o conteúdo horizontalmente */
-  align-items: center; /* Centraliza o conteúdo verticalmente */
-  background-color: #f5f5f5; /* Cor de fundo caso a imagem não carregue */
-  overflow: hidden; /* Evita que o conteúdo ultrapasse os limites */
+  height: 500px; /* Altura fixa */
+  margin: 0 auto;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .banner-image {
   width: 100%; /* A imagem ocupa toda a largura disponível */
-  height: auto; /* Ajusta a altura proporcional à largura */
-  object-fit: cover; /* Mantém a proporção da imagem e cobre todo o espaço disponível */
+  height: 500px; /* Ajusta a altura proporcional à largura */
+  object-fit: content; /* Mantém a proporção da imagem e cobre todo o espaço disponível */
 }
 
 /* Responsividade para telas menores */

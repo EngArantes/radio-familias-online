@@ -71,7 +71,7 @@ const VideoGallery = () => {
     setShowModal(true); // Exibe a modal
   };
 
-  const handleMarkAsFeatured = async (id, isFeatured, videoLink) => {
+  const handleMarkAsFeatured = async (id, isFeatured, videoLink, videoTitle) => {
     try {
       if (isFeatured || featuredCount < 4) {
         const videoDoc = doc(db, "videos", id);
@@ -95,7 +95,7 @@ const VideoGallery = () => {
         setFeaturedCount(newFeaturedCount);
 
         if (!isFeatured) {
-          await setDoc(doc(db, "VideosDestaque", id), { link: videoLink });
+          await setDoc(doc(db, "VideosDestaque", id), { link: videoLink, title: videoTitle });
         } else {
           await deleteDoc(doc(db, "VideosDestaque", id));
         }
@@ -128,13 +128,11 @@ const VideoGallery = () => {
               <>
                 <div className="checkbox-container">
                   <label>
-                    <input
-                      type="checkbox"
-                      checked={video.featured === true}
-                      onChange={() =>
-                        handleMarkAsFeatured(video.id, video.featured, video.link)
-                      }
-                    />
+                  <input
+                    type="checkbox"
+                    checked={video.featured === true}
+                    onChange={() => handleMarkAsFeatured(video.id, video.featured, video.link, video.title)}
+                  />
                     Marcar como destaque
                   </label>
                 </div>

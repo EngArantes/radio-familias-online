@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { db } from '../firebaseConfig'; // Importando o Firestore
 import { doc, getDoc } from 'firebase/firestore';
-import './BannerPrincipal'
+import './BannerPrincipal.css';
 
 const BannerPrincipal = () => {
   const [bannerImage, setBannerImage] = useState(null);
