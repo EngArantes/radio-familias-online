@@ -93,8 +93,13 @@
     display: none; /* Esconde o menu inicialmente */
     padding: 20px 0;
   }
-
   
   
 }
 
+@media (max-width: 480px) {
+  .menu-button {
+    width: 20%;
+   
+  }
+}
