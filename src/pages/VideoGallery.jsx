@@ -18,12 +18,12 @@ const VideoGallery = () => {
       try {
         const videosCollection = collection(db, "videos");
         const videoSnapshot = await getDocs(videosCollection);
-        const videoList = videoSnapshot.docs.map(doc => ({
+        const videoList = videoSnapshot.docs.map((doc) => ({
           id: doc.id,
-          ...doc.data()
+          ...doc.data(),
         }));
 
-        const featuredVideos = videoList.filter(video => video.featured === true);
+        const featuredVideos = videoList.filter((video) => video.featured === true);
         setFeaturedCount(featuredVideos.length); // Atualiza a quantidade de vídeos destacados
         setVideos(videoList);
         setFilteredVideos(videoList); // Inicializa com todos os vídeos
@@ -45,22 +45,21 @@ const VideoGallery = () => {
         // Remove o vídeo da coleção "videos"
         const videoDoc = doc(db, "videos", videoToDelete);
         await deleteDoc(videoDoc);
-  
+
         // Remove o vídeo da coleção "VideosDestaque" se existir
         const featuredDoc = doc(db, "VideosDestaque", videoToDelete);
         await deleteDoc(featuredDoc);
-  
+
         // Atualiza o estado local
-        setVideos(videos.filter(video => video.id !== videoToDelete));
-        setFilteredVideos(filteredVideos.filter(video => video.id !== videoToDelete));
-  
+        setVideos(videos.filter((video) => video.id !== videoToDelete));
+        setFilteredVideos(filteredVideos.filter((video) => video.id !== videoToDelete));
+
         setShowModal(false); // Fecha a modal após a exclusão
       }
     } catch (error) {
       console.error("Erro ao excluir o vídeo:", error);
     }
   };
-  
 
   const handleCancel = () => {
     setShowModal(false); // Fecha a modal se o usuário cancelar
@@ -72,41 +71,43 @@ const VideoGallery = () => {
     setShowModal(true); // Exibe a modal
   };
 
-  const handleMarkAsFeatured = async (id, isFeatured, videoLink, videoTitle) => {
+  const handleMarkAsFeatured = async (id, isFeatured, videoLink) => {
     try {
       if (isFeatured || featuredCount < 4) {
         const videoDoc = doc(db, "videos", id);
         await updateDoc(videoDoc, {
-          featured: !isFeatured // Alterna entre marcado e desmarcado
+          featured: !isFeatured, // Alterna entre marcado e desmarcado
         });
-  
-        setVideos(videos.map((video) =>
-          video.id === id ? { ...video, featured: !isFeatured } : video
-        ));
-  
-        setFilteredVideos(filteredVideos.map((video) =>
-          video.id === id ? { ...video, featured: !isFeatured } : video
-        ));
-  
+
+        setVideos(
+          videos.map((video) =>
+            video.id === id ? { ...video, featured: !isFeatured } : video
+          )
+        );
+
+        setFilteredVideos(
+          filteredVideos.map((video) =>
+            video.id === id ? { ...video, featured: !isFeatured } : video
+          )
+        );
+
         const newFeaturedCount = isFeatured ? featuredCount - 1 : featuredCount + 1;
         setFeaturedCount(newFeaturedCount);
-  
+
         if (!isFeatured) {
-          await setDoc(doc(db, "VideosDestaque", id), { 
-            link: videoLink,
-            title: videoTitle // Adiciona o título do vídeo ao Firestore
-          });
+          await setDoc(doc(db, "VideosDestaque", id), { link: videoLink });
         } else {
           await deleteDoc(doc(db, "VideosDestaque", id));
         }
       } else {
-        alert("Você já tem 4 vídeos destacados. Para marcar este, desmarque um dos vídeos destacados.");
+        alert(
+          "Você já tem 4 vídeos destacados. Para marcar este, desmarque um dos vídeos destacados."
+        );
       }
     } catch (error) {
       console.error("Erro ao marcar/desmarcar o vídeo como destaque:", error);
     }
   };
-  
 
   return (
     <div className="video-gallery">
@@ -121,7 +122,8 @@ const VideoGallery = () => {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             ></iframe>
-            <p className="video-title">{video.title || "Sem título"}</p> {/* Exibe o título do vídeo */}
+            <p className="video-title">{video.title || "Sem título"}</p>{" "}
+            {/* Exibe o título do vídeo */}
             {currentUser && (
               <>
                 <div className="checkbox-container">
@@ -129,7 +131,9 @@ const VideoGallery = () => {
                     <input
                       type="checkbox"
                       checked={video.featured === true}
-                      onChange={() => handleMarkAsFeatured(video.id, video.featured, video.link)}
+                      onChange={() =>
+                        handleMarkAsFeatured(video.id, video.featured, video.link)
+                      }
                     />
                     Marcar como destaque
                   </label>
