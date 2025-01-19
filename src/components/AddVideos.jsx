@@ -20,7 +20,7 @@ const VideoForm = () => {
       const videosCollection = collection(db, "videos");
       await addDoc(videosCollection, {
         link: videoLink,
-        title: videoTitle, // Adiciona o título ao documento
+        title: videoTitle,
       });
 
       setMessage("Vídeo adicionado com sucesso!");

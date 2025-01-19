@@ -72,27 +72,30 @@ const VideoGallery = () => {
     setShowModal(true); // Exibe a modal
   };
 
-  const handleMarkAsFeatured = async (id, isFeatured, videoLink) => {
+  const handleMarkAsFeatured = async (id, isFeatured, videoLink, videoTitle) => {
     try {
       if (isFeatured || featuredCount < 4) {
         const videoDoc = doc(db, "videos", id);
         await updateDoc(videoDoc, {
           featured: !isFeatured // Alterna entre marcado e desmarcado
         });
-
+  
         setVideos(videos.map((video) =>
           video.id === id ? { ...video, featured: !isFeatured } : video
         ));
-
+  
         setFilteredVideos(filteredVideos.map((video) =>
           video.id === id ? { ...video, featured: !isFeatured } : video
         ));
-
+  
         const newFeaturedCount = isFeatured ? featuredCount - 1 : featuredCount + 1;
         setFeaturedCount(newFeaturedCount);
-
+  
         if (!isFeatured) {
-          await setDoc(doc(db, "VideosDestaque", id), { link: videoLink });
+          await setDoc(doc(db, "VideosDestaque", id), { 
+            link: videoLink,
+            title: videoTitle // Adiciona o título do vídeo ao Firestore
+          });
         } else {
           await deleteDoc(doc(db, "VideosDestaque", id));
         }
@@ -103,6 +106,7 @@ const VideoGallery = () => {
       console.error("Erro ao marcar/desmarcar o vídeo como destaque:", error);
     }
   };
+  
 
   return (
     <div className="video-gallery">
