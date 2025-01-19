@@ -23,6 +23,8 @@
 @media (max-width: 480px) {
   .banner-principal {
     padding: 0; /* Remove espaçamentos extras no container para telas muito pequenas */
+    width: 100%; /* Garante que ocupe a largura total */
+    height: auto; /* Altura proporcional à largura */
   }
 
   .banner-image {

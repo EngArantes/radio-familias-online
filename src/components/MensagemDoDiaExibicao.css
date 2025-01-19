@@ -46,7 +46,7 @@
 /* Responsividade para telas pequenas */
 @media (max-width: 768px) {
   .mensagem-do-dia {
-    width: 95%; /* Largura mais ampla em telas menores */
+    width: 80%; /* Largura mais ampla em telas menores */
     padding: 15px; /* Aumenta o padding para telas pequenas */
   }
 
@@ -73,7 +73,7 @@
 /* Responsividade para telas muito pequenas */
 @media (max-width: 480px) {
   .mensagem-do-dia {
-    width: 100%; /* Largura total da tela */
+    width: 80%; /* Largura total da tela */
     padding: 10px; /* Padding reduzido em telas muito pequenas */
   }
 

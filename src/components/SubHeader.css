@@ -32,32 +32,40 @@ body {
 @media (max-width: 768px) {
   .SubHeader {
   max-width: 100%; /* Garante que o SubHeader não fique maior que a tela */
-  padding: 10px 5%; /* Adiciona espaçamento proporcional */
+  padding: 10px; /* Adiciona espaçamento proporcional */
 }
 
 
   .logomarcaTop {
-    margin-left: 0; 
+    margin: 0 auto; 
   }
   .logomarcaDivino {
-    margin-right: 0; 
+    margin: 0 auto; 
   }
 }
 
 /* Responsividade para telas menores que 480px */
+/* Responsividade para telas menores que 480px */
 @media (max-width: 480px) {
+  .SubHeader {
+    display: flex;
+    justify-content: center; /* Centraliza as imagens no eixo vertical */
+    align-items: center; /* Centraliza as imagens no eixo horizontal */
+    width: 100%; /* Garante que ocupe toda a largura da tela */
+    padding: 10px; /* Ajusta o espaçamento */
+  }
+
   .logomarcaTop {
-    height: 8vh;
-    margin: 10px 0;
+    max-height: 10vh; /* Limita a altura máxima proporcional */
+    height: auto; /* Mantém a proporção original */
+    width: auto; /* Mantém a proporção original */
+    max-width: 80%; /* Limita a largura para as imagens não ficarem grandes demais */
+    margin-right: 100px; /* Espaço entre as logomarcas */
   }
 
   .logomarcaDivino {
-    width: 100px;
-    margin: 10px 0;
-  }
-
-  .SubHeader {
-    width: 100%; /* Garante que ocupe toda a largura da tela */
-    padding: 10px 5px; /* Ajusta o espaçamento */
+    display: none;
   }
 }
+
+
