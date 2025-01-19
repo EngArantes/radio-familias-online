@@ -57,9 +57,16 @@ const Contato = () => {
             type="text"
             id="name"
             value={nome}
-            onChange={(e) => setNome(e.target.value)}
+            onChange={(e) => {
+              if (e.target.value.length <= 20) {
+                setNome(e.target.value);
+              }
+            }}
+            maxLength={20} // Limita diretamente no input
+            placeholder="Máximo de 20 caracteres"
           />
         </div>
+
 
         <div className="form-group">
           <label htmlFor="title">Email:</label>
