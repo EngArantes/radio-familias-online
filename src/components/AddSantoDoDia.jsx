@@ -57,7 +57,6 @@ function SantoDoDia() {
     <div className="santo-do-dia">
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="nome">Nome do Santo:</label>
           <input
             type="text"
             id="nome"
@@ -67,7 +66,6 @@ function SantoDoDia() {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="descricao">Descrição:</label>
           <textarea
             id="descricao"
             value={descricao}
@@ -77,7 +75,6 @@ function SantoDoDia() {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="imagem">Imagem do Santo:</label>
           <input type="file" id="imagem" accept="image/*" onChange={handleImageChange} />
         </div>
         <button type="submit" disabled={loading}>
