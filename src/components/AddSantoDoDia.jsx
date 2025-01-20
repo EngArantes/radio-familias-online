@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { db, storage } from '../firebaseConfig';
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc, getDocs, deleteDoc, doc } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import './AddSantoDoDia.css';
 
@@ -27,13 +27,18 @@ function SantoDoDia() {
     setLoading(true);
 
     try {
+      // Apagar os dados existentes
+      const santoCollection = collection(db, 'SantoDoDia');
+      const snapshot = await getDocs(santoCollection);
+      const deletePromises = snapshot.docs.map((doc) => deleteDoc(doc.ref));
+      await Promise.all(deletePromises);
+
       // Upload da imagem para o Storage do Firebase
       const imageRef = ref(storage, `SantoDoDia/${imagem.name}`);
       await uploadBytes(imageRef, imagem);
       const imageUrl = await getDownloadURL(imageRef);
 
-      // Salvar os dados no Firestore
-      const santoCollection = collection(db, 'SantoDoDia');
+      // Salvar os novos dados no Firestore
       await addDoc(santoCollection, {
         nome,
         descricao,
