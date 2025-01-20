@@ -8,19 +8,13 @@
     border-radius: 20px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), inset 0 -4px 8px rgba(0, 0, 0, 0.05);
     padding: 20px;
-    width: 100px;
+    height: 3vh;
     flex-direction: column;
     gap: 20px;
     margin-left: 50px;
   }
   
-  /* Área do display (simula tela do rádio) */
-  .playerContent {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+  
   
   .radioDisplay {
     background: #000;
@@ -53,8 +47,8 @@
     align-items: center;
     background-color: #f0f0f0;
     border: none;
-    width: 50px;
-    height: 50px;
+    width: 3rem;
+    height: 3rem;
     border-radius: 50%; /* Botões redondos */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), inset 0 -2px 4px rgba(0, 0, 0, 0.1);
     cursor: pointer;
