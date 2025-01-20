@@ -5,6 +5,7 @@ import LeftBanner from '../components/BannerEsquerda';
 import RightBanner from '../components/BannerDireita';
 import VideosDestaque from "../components/VideosDestaque";
 import MensagemDoDia from '../components/MensagemDoDiaExibicao';
+import SantoDoDia from '../components/SantoDoDia';
 
 function Home() {
   const [videos, setVideos] = useState([
@@ -31,7 +32,8 @@ function Home() {
 
           <BannerPrincipal />
           <h2>Evangelizando através das ondas da internet!</h2>
-          <MensagemDoDia />        
+          <MensagemDoDia />    
+          <SantoDoDia/>    
         </div>
 
         {/* Coluna Direita */}

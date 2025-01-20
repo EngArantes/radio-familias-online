@@ -6,6 +6,7 @@ import AddLeftRightBanners from '../components/AddLeftRightBanners';
 import AddVideos from '../components/AddVideos';
 import AddMensagemDoDia from '../components/AddMensagemDoDia';
 import ListagemDeMensagens from '../components/ListagemDeMensagens';
+import SantoDoDia from '../components/AddSantoDoDia';
 
 function Dashboard() {
   return (
@@ -54,6 +55,28 @@ function Dashboard() {
           <h2>Mensagens Recebidas</h2>
           <ListagemDeMensagens/>
         </div>
+        
+      </div>
+
+      {/* Terceira linha */}
+      <div className="dashboard-columns">
+      <div className="column">
+          {/* Aqui você pode adicionar outro conteúdo */}
+          <h2>Santo do Dia</h2>
+          <SantoDoDia/>
+        </div>
+
+        <div className="column">
+          {/* Coluna do formulário para adicionar o banner */}
+          
+        </div>
+
+        <div className="column">
+          {/* Aqui você pode adicionar outro conteúdo */}
+          
+        </div>
+        
+        
       </div>
     </div>
   );
