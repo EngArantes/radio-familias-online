@@ -67,7 +67,7 @@
 
   .menu-button {
     width: 10%;
-    margin-left: 40%;
+    margin-left: 50%;
     background: none;
     border: none;
     color: white;
@@ -101,6 +101,6 @@
 @media (max-width: 480px) {
   .menu-button {
     width: 20%;
-   
+    margin-right: 15%;
   }
 }
