@@ -47,9 +47,7 @@ function Header() {
   return (
     <>
       <header className="header">
-        <button className="menu-button" onClick={toggleMenu}>
-          ☰
-        </button>
+        
         <nav>
           <ul className={`nav-links ${isMenuOpen ? 'show' : ''}`}>
             <li><Link to="/" onClick={handleLinkClick}>Home</Link></li>
@@ -69,6 +67,9 @@ function Header() {
           
         </nav>
         <Player/>
+        <button className="menu-button" onClick={toggleMenu}>
+          ☰
+        </button>
       </header>
 
 
