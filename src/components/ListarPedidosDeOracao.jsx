@@ -28,7 +28,10 @@ const ListagemPedidoDeOracao = () => {
 
   // Função para excluir mensagem do Firestore
   const excluirMensagem = async () => {
+    if (!mensagemExcluir) return;
+
     try {
+      console.log("Excluindo mensagem com ID:", mensagemExcluir);  // Log para depuração
       // Excluir do Firestore
       await deleteDoc(doc(db, "Pedidos-de-oracao", mensagemExcluir)); // Deletar documento da coleção correta
       // Atualizar lista local
@@ -51,6 +54,7 @@ const ListagemPedidoDeOracao = () => {
 
   // Função para solicitar confirmação de exclusão
   const confirmarExclusao = (id) => {
+    console.log("Solicitando confirmação de exclusão para ID:", id);  // Log para depuração
     // Exibe uma caixa de confirmação (pode ser um modal ou prompt)
     const confirmar = window.confirm("Tem certeza de que deseja excluir esta mensagem?");
     if (confirmar) {
