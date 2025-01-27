@@ -9,6 +9,8 @@ import Dashboard from './pages/Dashboard';
 import PrivateRoute from './router/PrivateRoute';
 import VideoGallery from './pages/VideoGallery'; 
 import Contato from './pages/Contato';
+import Eventos from './pages/Eventos';
+import EventoDetalhes from './pages/EventoDetalhes'; // Adicionado import para a página de detalhes do evento
 
 function App() {
   return (
@@ -21,7 +23,9 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/dashboard" element={<PrivateRoute element={<Dashboard />} />} />
             <Route path="/videos-gallery" element={<VideoGallery />} /> 
-            <Route path="/contato" element={<Contato />} />  
+            <Route path="/contato" element={<Contato />} /> 
+            <Route path="/eventos" element={<Eventos />} />  
+            <Route path="/eventos/:id" element={<EventoDetalhes />} /> {/* Rota para detalhes do evento */}
           </Routes>
           <Footer />
         </div>

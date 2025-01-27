@@ -7,6 +7,7 @@ import AddVideos from '../components/AddVideos';
 import AddMensagemDoDia from '../components/AddMensagemDoDia';
 import ListagemDeMensagens from '../components/ListagemDeMensagens';
 import SantoDoDia from '../components/AddSantoDoDia';
+import AddEventos from '../components/AddEventos';
 
 function Dashboard() {
   return (
@@ -68,7 +69,8 @@ function Dashboard() {
 
         <div className="column">
           {/* Coluna do formulário para adicionar o banner */}
-          
+          <h2>Adicionar Evento</h2>
+          <AddEventos/>
         </div>
 
         <div className="column">

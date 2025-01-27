@@ -15,7 +15,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 export const auth = getAuth(app);
-export const storage = getStorage(app); // Inicializando e exportando o Storage
+export const storage = getStorage(app);
 
 // Habilita persistência offline para Firestore
 /* enableIndexedDbPersistence(db).catch((err) => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import './Footer.css';
-import { FaInstagram } from 'react-icons/fa'; // Usando react-icons
+import { FaInstagram, FaYoutube } from 'react-icons/fa'; // Usando react-icons
 
 function Footer() {
   return (
@@ -10,6 +10,9 @@ function Footer() {
           
           <a href="https://www.instagram.com/radiofamiliasonline/" target="_blank" rel="noopener noreferrer">
             <FaInstagram size={30} />
+          </a>
+          <a href="https://www.youtube.com/channel/UCN35zhY7Pg1sDyLzFSx0ZUw/" target="_blank" rel="noopener noreferrer">
+            <FaYoutube size={30} />
           </a>
         </div>
         <p>© 2025 Radio Famílias On-line. Todos os direitos reservados. Site feito por PublishUp!</p>

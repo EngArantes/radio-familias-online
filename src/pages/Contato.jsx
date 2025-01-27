@@ -49,7 +49,7 @@ const Contato = () => {
 
   return (
     <div className="form-message">
-      <h2>Envie-nos uma mensagem</h2>
+      <h2>Faça seu pedido de oração</h2>
       <form onSubmit={enviarMensagem}>
         <div className="form-group">
           <label htmlFor="name">Nome:</label>

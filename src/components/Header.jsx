@@ -51,6 +51,7 @@ function Header() {
         <nav>
           <ul className={`nav-links ${isMenuOpen ? 'show' : ''}`}>
             <li><Link to="/" onClick={handleLinkClick}>Home</Link></li>
+            <li><Link to="/eventos" onClick={handleLinkClick}>Eventos</Link></li>
             <li><Link to="/videos-gallery" onClick={handleLinkClick}>Vídeos</Link></li>
             <li><Link to="/contato" onClick={handleLinkClick}>Contato</Link></li>
               
