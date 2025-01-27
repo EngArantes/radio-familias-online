@@ -26,10 +26,12 @@ const ListagemPedidoDeOracao = () => {
     buscarMensagens();
   }, []);
 
-  // Função para excluir mensagem
+  // Função para excluir mensagem do Firestore
   const excluirMensagem = async () => {
     try {
-      await deleteDoc(doc(db, "Mensagens-recebidas", mensagemExcluir));
+      // Excluir do Firestore
+      await deleteDoc(doc(db, "Pedidos-de-oracao", mensagemExcluir)); // Deletar documento da coleção correta
+      // Atualizar lista local
       setMensagens(mensagens.filter((mensagem) => mensagem.id !== mensagemExcluir));
       setMensagemExcluir(null); // Limpa a ID da mensagem após a exclusão
     } catch (error) {
@@ -53,7 +55,7 @@ const ListagemPedidoDeOracao = () => {
     const confirmar = window.confirm("Tem certeza de que deseja excluir esta mensagem?");
     if (confirmar) {
       setMensagemExcluir(id); // Se confirmado, guarda o id da mensagem
-      excluirMensagem(); // Exclui a mensagem
+      excluirMensagem(); // Exclui a mensagem do Firestore e atualiza a lista
     }
   };
 
