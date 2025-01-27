@@ -39,6 +39,14 @@
     cursor: pointer;
   }
   
+  .lista-mensagens .botaoDeletar {
+    background-color: #999999;
+  }
+
+  .lista-mensagens .botaoAbrir {
+    background-color: #e73969;
+  }
+  
   .lista-mensagens button:hover {
     background-color: #cc174a;
   }

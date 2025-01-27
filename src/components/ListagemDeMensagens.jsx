@@ -82,10 +82,10 @@ const ListagemDeMensagens = () => {
                 <td>{mensagem.nome}</td>
                 <td>{mensagem.email}</td>
                 <td>
-                  <button onClick={() => abrirMensagem(mensagem)}>Abrir</button>                
+                  <button onClick={() => abrirMensagem(mensagem)} className="botaoAbrir">Abrir</button>                
                 </td>
                 <td>
-                  <button onClick={() => confirmarExclusao(mensagem.id)}>Deletar</button>
+                  <button onClick={() => confirmarExclusao(mensagem.id)} className="botaoDeletar">Deletar</button>
                 </td>
               </tr>
             ))}
@@ -105,7 +105,7 @@ const ListagemDeMensagens = () => {
             <h3>{mensagemAberta.titulo}</h3>
             <p><strong>Nome:</strong> {mensagemAberta.nome}</p>
             <p><strong>Mensagem:</strong> {mensagemAberta.mensagem}</p>
-            <button onClick={fecharModal}>Fechar</button>
+            <button className="botaoFechar" onClick={fecharModal}>Fechar</button>
           </div>
         </div>
       )}

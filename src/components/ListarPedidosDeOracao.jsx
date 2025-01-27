@@ -76,10 +76,10 @@ const ListagemPedidoDeOracao = () => {
                 <td>{mensagem.nome}</td>
                 <td>{mensagem.email}</td>
                 <td>
-                  <button onClick={() => abrirMensagem(mensagem)}>Abrir</button>                
+                <button onClick={() => abrirMensagem(mensagem)} className="botaoAbrir">Abrir</button>                
                 </td>
                 <td>
-                  <button onClick={() => confirmarExclusao(mensagem.id)}>Deletar</button>
+                <button onClick={() => confirmarExclusao(mensagem.id)} className="botaoDeletar">Deletar</button>
                 </td>
               </tr>
             ))}
