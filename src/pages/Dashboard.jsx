@@ -8,6 +8,7 @@ import AddMensagemDoDia from '../components/AddMensagemDoDia';
 import ListagemDeMensagens from '../components/ListagemDeMensagens';
 import SantoDoDia from '../components/AddSantoDoDia';
 import AddEventos from '../components/AddEventos';
+import ListagePedidosDeOracao from '../components/ListarPedidosDeOracao';
 
 function Dashboard() {
   return (
@@ -75,9 +76,9 @@ function Dashboard() {
 
         <div className="column">
           {/* Aqui você pode adicionar outro conteúdo */}
-          
-        </div>
-        
+          <h2>Pedidos de oração recebidos</h2>
+          <ListagePedidosDeOracao/>
+        </div>        
         
       </div>
     </div>

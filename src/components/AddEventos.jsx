@@ -117,7 +117,6 @@ const AddEventos = () => {
                     value={descricao}
                     onChange={(e) => setDescricao(e.target.value)}
                     placeholder="Descrição do Evento"
-                    required
                 />
                 <input
                     type="file"

@@ -10,7 +10,8 @@ import PrivateRoute from './router/PrivateRoute';
 import VideoGallery from './pages/VideoGallery'; 
 import Contato from './pages/Contato';
 import Eventos from './pages/Eventos';
-import EventoDetalhes from './pages/EventoDetalhes'; // Adicionado import para a página de detalhes do evento
+import EventoDetalhes from './pages/EventoDetalhes'; 
+import PedidoDeOracao from './pages/PedidoDeOracao';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="/dashboard" element={<PrivateRoute element={<Dashboard />} />} />
             <Route path="/videos-gallery" element={<VideoGallery />} /> 
             <Route path="/contato" element={<Contato />} /> 
+            <Route path="/pedido-de-oracao" element={<PedidoDeOracao />} /> 
             <Route path="/eventos" element={<Eventos />} />  
             <Route path="/eventos/:id" element={<EventoDetalhes />} /> {/* Rota para detalhes do evento */}
           </Routes>

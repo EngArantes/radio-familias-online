@@ -54,7 +54,8 @@ const EventosList = () => {
                             onClick={() => handleCardClick(evento.id)} // Redireciona ao clicar no card
                         >
                             <h3>{evento.nome}</h3>
-                            <p><strong>Data:</strong> {new Date(evento.dataInicio).toLocaleString()}</p>
+                            <p><strong>Data:</strong> {new Date(evento.dataInicio).toLocaleDateString()}</p>
+                            <p><strong>Horário:</strong> {new Date(evento.dataInicio).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
                             <p><strong>Local:</strong> {evento.local}</p>
                             {evento.imagem && (
                                 <div className="evento-image">

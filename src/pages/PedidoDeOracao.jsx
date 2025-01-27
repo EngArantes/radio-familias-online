@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { db } from "../firebaseConfig";
 import { collection, addDoc } from "firebase/firestore";
 import './Contato.css';
+import './PedidoDeOracao.css';
+import PedidoDeOracaoIMG from '../../src/pedido_de_oracao.png';
 
-const Contato = () => {
+const PedidoDeOracao = () => {
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const [mensagem, setMensagem] = useState('');
@@ -19,8 +21,8 @@ const Contato = () => {
     }
 
     try {
-      // Adicionando o documento à coleção "Mensagens-recebidas"
-      const mensagensRef = collection(db, "Mensagens-recebidas");
+      // Adicionando o documento à coleção "oracao-recebida"
+      const mensagensRef = collection(db, "Pedidos-de-oracao");
       await addDoc(mensagensRef, {
         nome,
         email,
@@ -30,7 +32,7 @@ const Contato = () => {
 
       // Limpa os campos após o envio
       setNome('');
-      setEmail('');
+      setEmail('email@example.com');
       setMensagem('');
       alert("Mensagem enviada com sucesso!");
     } catch (error) {
@@ -49,7 +51,8 @@ const Contato = () => {
 
   return (
     <div className="form-message">
-      <h2>Mande-nos uma mensagem!</h2>
+        <img src={PedidoDeOracaoIMG} alt="Pedido de Oração" className="pedido-oracao-imagem" />
+      <h2>Faça seu pedido de oração!</h2>
       
       <form onSubmit={enviarMensagem}>
         <div className="form-group">
@@ -76,6 +79,7 @@ const Contato = () => {
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            placeholder='Opcional'
           />
         </div>
 
@@ -92,10 +96,11 @@ const Contato = () => {
           </div>
         </div>
 
-        <button type="submit">Enviar Mensagem</button>
+        <button type="submit">Enviar</button>
       </form>
     </div>
   );
 };
 
-export default Contato;
+
+export default PedidoDeOracao;

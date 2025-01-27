@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import './Header.css';
 import { useAuth } from '../contexts/AuthContext';
 import Player from '../components/Player';
+import PedidoDeOracaoIMG from '../../src/pedido_de_oracao.png';
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -47,27 +48,36 @@ function Header() {
   return (
     <>
       <header className="header">
-        
+
         <nav>
           <ul className={`nav-links ${isMenuOpen ? 'show' : ''}`}>
+            {/* Adicionando o link com imagem e texto abaixo */}
+            <li className="pedido-oracao">
+              <Link to="/pedido-de-oracao" onClick={handleLinkClick}>
+                <img src={PedidoDeOracaoIMG} alt="Pedido de Oração" className="pedido-oracao-img" />
+                <p>Pedido de Oração</p>
+              </Link>
+            </li>
             <li><Link to="/" onClick={handleLinkClick}>Home</Link></li>
             <li><Link to="/eventos" onClick={handleLinkClick}>Eventos</Link></li>
             <li><Link to="/videos-gallery" onClick={handleLinkClick}>Vídeos</Link></li>
             <li><Link to="/contato" onClick={handleLinkClick}>Contato</Link></li>
-              
+
             {currentUser && (
               <li><Link to="/dashboard" className="nav-link" onClick={handleLinkClick}>Dashboard</Link></li>
             )}
+
             {currentUser ? (
               <li><button onClick={handleLogout} className="login-button">Sair</button></li>
             ) : (
               <li><button onClick={toggleModal} className="login-button">Login</button></li>
             )}
+
             
           </ul>
-          
         </nav>
-        <Player/>
+
+        <Player />
         <button className="menu-button" onClick={toggleMenu}>
           ☰
         </button>

@@ -30,8 +30,10 @@ const EventoDetalhes = () => {
     return (
         <div className="evento-detalhes">
             <h1>{evento.nome}</h1>
-            <p><strong>Data de Início:</strong> {new Date(evento.dataInicio).toLocaleString()}</p>
-            <p><strong>Data de Fim:</strong> {new Date(evento.dataFim).toLocaleString()}</p>
+            <p><strong>Data de Início:</strong> {new Date(evento.dataInicio).toLocaleDateString()}</p>
+            <p><strong>Horário de Início:</strong> {new Date(evento.dataInicio).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
+            <p><strong>Data de Fim:</strong> {new Date(evento.dataFim).toLocaleDateString()}</p>
+            <p><strong>Horário de Fim:</strong> {new Date(evento.dataFim).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
             <p><strong>Local:</strong> {evento.local}</p>
             {evento.imagem && (
                 <div className="evento-detalhes-image">

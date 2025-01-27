@@ -18,6 +18,24 @@
   padding: 0;
 }
 
+.pedido-oracao {
+  text-align: center;
+}
+
+.pedido-oracao-img {
+  width: 50px; /* Ajuste o tamanho da imagem conforme necessário */
+  height: 50px;
+  display: block;
+  margin: 0 auto;
+}
+
+.pedido-oracao p {
+  margin-top: 5px;
+  font-size: 14px;
+  color: #ffffff;
+}
+
+
 #email, #password{
   width: 90%;
 }

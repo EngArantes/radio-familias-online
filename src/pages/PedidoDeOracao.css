@@ -1,0 +1,16 @@
+.pedido-oracao {
+    text-align: center;
+  }
+  
+  .pedido-oracao-imagem {
+    width: 40%; /* Ajuste o tamanho da imagem conforme necessário */
+    height: 40%;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .pedido-oracao p {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #ffffff;
+  }
