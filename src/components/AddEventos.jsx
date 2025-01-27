@@ -87,13 +87,7 @@ const AddEventos = () => {
                     placeholder="Nome do Evento"
                     required
                 />
-                <textarea
-                    id="descricao"
-                    value={descricao}
-                    onChange={(e) => setDescricao(e.target.value)}
-                    placeholder="Descrição do Evento"
-                    required
-                />
+                
                 <label className='label-datas'>Data e Horário de início</label>
                 <input
                     type="datetime-local"
@@ -116,6 +110,13 @@ const AddEventos = () => {
                     value={local}
                     onChange={(e) => setLocal(e.target.value)}
                     placeholder="Local do Evento"
+                    required
+                />
+                <textarea
+                    id="descricao"
+                    value={descricao}
+                    onChange={(e) => setDescricao(e.target.value)}
+                    placeholder="Descrição do Evento"
                     required
                 />
                 <input
