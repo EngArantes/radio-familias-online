@@ -7,7 +7,7 @@ import PedidoDeOracaoIMG from '../../src/pedido_de_oracao.png';
 
 const PedidoDeOracao = () => {
   const [nome, setNome] = useState('');
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState('email@example.com');
   const [mensagem, setMensagem] = useState('');
 
   // Função para enviar a mensagem

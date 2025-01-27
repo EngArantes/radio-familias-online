@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../firebaseConfig";
 import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
-import './ListagemDeMensagens.css'
+import './ListagemDeMensagens.css';
 
 const ListagemPedidoDeOracao = () => {
   const [mensagens, setMensagens] = useState([]);
   const [mensagemAberta, setMensagemAberta] = useState(null);
+  const [mensagemExcluir, setMensagemExcluir] = useState(null); // Estado para armazenar a mensagem a ser excluída
 
   // Função para buscar mensagens do banco de dados
   useEffect(() => {
@@ -26,10 +27,11 @@ const ListagemPedidoDeOracao = () => {
   }, []);
 
   // Função para excluir mensagem
-  const excluirMensagem = async (id) => {
+  const excluirMensagem = async () => {
     try {
-      await deleteDoc(doc(db, "Mensagens-recebidas", id));
-      setMensagens(mensagens.filter((mensagem) => mensagem.id !== id));
+      await deleteDoc(doc(db, "Mensagens-recebidas", mensagemExcluir));
+      setMensagens(mensagens.filter((mensagem) => mensagem.id !== mensagemExcluir));
+      setMensagemExcluir(null); // Limpa a ID da mensagem após a exclusão
     } catch (error) {
       console.error("Erro ao excluir mensagem:", error);
     }
@@ -43,6 +45,16 @@ const ListagemPedidoDeOracao = () => {
   // Função para fechar o modal
   const fecharModal = () => {
     setMensagemAberta(null);
+  };
+
+  // Função para solicitar confirmação de exclusão
+  const confirmarExclusao = (id) => {
+    // Exibe uma caixa de confirmação (pode ser um modal ou prompt)
+    const confirmar = window.confirm("Tem certeza de que deseja excluir esta mensagem?");
+    if (confirmar) {
+      setMensagemExcluir(id); // Se confirmado, guarda o id da mensagem
+      excluirMensagem(); // Exclui a mensagem
+    }
   };
 
   return (
@@ -66,7 +78,7 @@ const ListagemPedidoDeOracao = () => {
                   <button onClick={() => abrirMensagem(mensagem)}>Abrir</button>                
                 </td>
                 <td>
-                  <button onClick={() => excluirMensagem(mensagem.id)}>Deletar</button>
+                  <button onClick={() => confirmarExclusao(mensagem.id)}>Deletar</button>
                 </td>
               </tr>
             ))}
