@@ -33,6 +33,10 @@
     border: 1px solid #ddd;
 }
 
+.santoImagem{
+    max-width: 80%;
+}
+
 .textoSanto{
     text-align: justify;
     font-weight:bold;

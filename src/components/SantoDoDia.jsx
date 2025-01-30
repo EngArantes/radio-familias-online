@@ -38,7 +38,7 @@ function SantoDoDiaDisplay() {
           <div className="santo-details" key={santo.id}>
             <h1>Santo do dia</h1>
             
-            {santo.imagem && <img src={santo.imagem} alt={santo.nome} />}
+            {santo.imagem && <img src={santo.imagem} alt={santo.nome} className='santoImagem'/>}
             <h3>{santo.nome}</h3>
             <p className='textoSanto'>{santo.descricao}</p>
           </div>

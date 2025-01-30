@@ -9,10 +9,6 @@ import SantoDoDia from '../components/SantoDoDia';
 
 function Home() {
   const [videos, setVideos] = useState([
-    { id: 1, videoId: 'fA6VFGP2ZGc', title: 'Vídeo 1' },
-    { id: 2, videoId: 'uow54Rc01kU', title: 'Vídeo 2' },
-    { id: 3, videoId: 'QbpKnSFALWY', title: 'Vídeo 3' },
-    { id: 4, videoId: 'FBPyjVN-wh8', title: 'Vídeo 4' },
   ]);
 
   useEffect(() => {
@@ -24,20 +20,24 @@ function Home() {
   return (
     <div className="home">
       <div className="content-grid">
-        {/* Coluna Esquerda */}
-        <LeftBanner />
+        <div className='colunaEsquerda'>
+          {/* Coluna Esquerda */}
+          <LeftBanner />
+        </div>
 
         {/* Coluna Central */}
         <div className="colunaCentral">
 
           <BannerPrincipal />
           <h2>Evangelizando através das ondas da internet!</h2>
-          <MensagemDoDia />    
-          <SantoDoDia/>    
+          <MensagemDoDia />
+          <SantoDoDia />
         </div>
 
+        <div className='colunaDireita'>
         {/* Coluna Direita */}
         <RightBanner />
+        </div>
       </div>
 
       <div className="video-column">

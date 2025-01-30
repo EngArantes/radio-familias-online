@@ -1,6 +1,7 @@
 /* Estilos gerais */
 .home {
   text-align: center;  
+  width: 100%;
 }
 
 .home h1 {
@@ -14,7 +15,6 @@
   color: #555;
   margin-bottom: 20px;
 }
-
 
 
 /* Player de rádio */
@@ -35,7 +35,22 @@
   padding: 5px;
 }
 
+/* Layout das 3 colunas */
+.content-grid {
+  display: grid;
+  grid-template-columns: 15% 60% 15%;
+  gap: 20px;
+  justify-content: center;
+}
 
+.colunaEsquerda,
+.colunaDireita {
+  width: 100%;
+}
+
+.colunaCentral {
+  width: 100%;
+}
 
 /* Vídeos em destaque */
 .videos-destaque {
@@ -50,12 +65,8 @@
   color: white;
 }
 
-/* Layout das 3 colunas */
-.content-grid {
-  display: grid;
-  grid-template-columns: 1.5fr 2.5fr 1.5fr;
-  gap: 20px;
-}
+
+
 
 .sidebar {
   background-color: #f1f1f1;
