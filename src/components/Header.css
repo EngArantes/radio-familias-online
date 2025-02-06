@@ -6,6 +6,7 @@
   align-items: center;
   position: relative;
   box-sizing: border-box;
+  z-index: 5000;
 }
 
 .nav-links {
