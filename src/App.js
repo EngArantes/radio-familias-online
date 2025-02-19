@@ -12,6 +12,7 @@ import Contato from './pages/Contato';
 import Eventos from './pages/Eventos';
 import EventoDetalhes from './pages/EventoDetalhes'; 
 import PedidoDeOracao from './pages/PedidoDeOracao';
+import Politicas from './pages/TermosDeUsoPrivacidade';
 
 function App() {
   return (
@@ -27,7 +28,8 @@ function App() {
             <Route path="/contato" element={<Contato />} /> 
             <Route path="/pedido-de-oracao" element={<PedidoDeOracao />} /> 
             <Route path="/eventos" element={<Eventos />} />  
-            <Route path="/eventos/:id" element={<EventoDetalhes />} /> {/* Rota para detalhes do evento */}
+            <Route path="/eventos/:id" element={<EventoDetalhes />} />
+            <Route path="/politicas" element={<Politicas />} />
           </Routes>
           <Footer />
         </div>
