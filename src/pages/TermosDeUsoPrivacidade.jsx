@@ -135,7 +135,7 @@ const TermsAndPrivacy = () => {
                 <h2>6. Contato</h2>
                 <p>
                     Para dúvidas ou solicitações relacionadas a estes termos, entre em
-                    contato pelo e-mail: radiofamiliasonlineh@gmail.com.
+                    contato pelo e-mail: radiofamiliasonline@gmail.com.
                 </p>
             </section>
         </div>
