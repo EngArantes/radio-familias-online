@@ -1,5 +1,6 @@
 // src/pages/Dashboard.jsx
 import React from 'react';
+import { usePlayer } from '../contexts/PlayerContext'; // Usando o contexto do player
 import AddBannerPrincipal from '../components/AddBannerPrincipal';
 import './Dashboard.css'; // Certifique-se de ter esse arquivo CSS para os estilos
 import AddLeftRightBanners from '../components/AddLeftRightBanners'; 
@@ -9,11 +10,20 @@ import ListagemDeMensagens from '../components/ListagemDeMensagens';
 import SantoDoDia from '../components/AddSantoDoDia';
 import AddEventos from '../components/AddEventos';
 import ListagePedidosDeOracao from '../components/ListarPedidosDeOracao';
+import ToggleSwitch from '../components/SwitchPlayer';
 
 function Dashboard() {
+    const { isPlayerActive, togglePlayer } = usePlayer(); // Acessando o estado do player
+  
   return (
     <div className="dashboard">
       <h1>Dashboard</h1>
+
+      {/* Switch para ativar/desativar o player */}
+      <div className="player-toggle">
+        <h2>Desativar/Ativar Player de Música</h2>
+        <ToggleSwitch checked={isPlayerActive} onChange={togglePlayer} />
+      </div>
       
       {/* Estrutura de 3 colunas */}
       <div className="dashboard-columns">

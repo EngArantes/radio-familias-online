@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext'; // Importe o AuthProvider
+import { PlayerProvider } from './contexts/PlayerContext'; // Importe o PlayerProvider
 import Header from './components/Header';
 import Home from './pages/Home';
 import SubHeader from './components/SubHeader';
@@ -17,23 +18,25 @@ import Politicas from './pages/TermosDeUsoPrivacidade';
 function App() {
   return (
     <AuthProvider> 
-      <Router>
-        <div className="App">
-          <SubHeader />
-          <Header />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/dashboard" element={<PrivateRoute element={<Dashboard />} />} />
-            <Route path="/videos-gallery" element={<VideoGallery />} /> 
-            <Route path="/contato" element={<Contato />} /> 
-            <Route path="/pedido-de-oracao" element={<PedidoDeOracao />} /> 
-            <Route path="/eventos" element={<Eventos />} />  
-            <Route path="/eventos/:id" element={<EventoDetalhes />} />
-            <Route path="/politicas" element={<Politicas />} />
-          </Routes>
-          <Footer />
-        </div>
-      </Router>
+      <PlayerProvider> {/* Envolva o App com o PlayerProvider */}
+        <Router>
+          <div className="App">
+            <SubHeader />
+            <Header />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/dashboard" element={<PrivateRoute element={<Dashboard />} />} />
+              <Route path="/videos-gallery" element={<VideoGallery />} /> 
+              <Route path="/contato" element={<Contato />} /> 
+              <Route path="/pedido-de-oracao" element={<PedidoDeOracao />} /> 
+              <Route path="/eventos" element={<Eventos />} />  
+              <Route path="/eventos/:id" element={<EventoDetalhes />} />
+              <Route path="/politicas" element={<Politicas />} />
+            </Routes>
+            <Footer />
+          </div>
+        </Router>
+      </PlayerProvider> {/* Fechando o PlayerProvider */}
     </AuthProvider>
   );
 }

@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app';
-import { getFirestore, enableIndexedDbPersistence } from 'firebase/firestore';
+import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore'; // Importando funções específicas do Firestore
 import { getAuth } from 'firebase/auth';
-import { getStorage } from 'firebase/storage'; // Importando o Firebase Storage
+import { getStorage } from 'firebase/storage';
 
 const firebaseConfig = {
   apiKey: "AIzaSyB6M8Q03fR0EwD_2WRR646x91Nkt13jkMg",
@@ -17,12 +17,31 @@ export const db = getFirestore(app);
 export const auth = getAuth(app);
 export const storage = getStorage(app);
 
-// Habilita persistência offline para Firestore
-/* enableIndexedDbPersistence(db).catch((err) => {
-  if (err.code === 'failed-precondition') {
-    console.error('Persistência offline falhou devido a múltiplas abas abertas.');
-  } else if (err.code === 'unimplemented') {
-    console.error('Persistência offline não é suportada no navegador.');
+// Exportando as funções necessárias
+export const getPlayerState = async () => {
+  try {
+    const docRef = doc(db, "configurations", "settings"); // Acessa o documento 'settings'
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      return docSnap.data().player_active;
+    } else {
+      console.log("Nenhuma configuração encontrada.");
+      return true; // Se não encontrar, assume que o player está ativado por padrão
+    }
+  } catch (error) {
+    console.error("Erro ao buscar estado do player: ", error);
+    return true; // Retorna true caso haja erro na consulta
   }
-}); */
+};
+
+export const updatePlayerState = async (isActive) => {
+  try {
+    const docRef = doc(db, "configurations", "settings");
+    await setDoc(docRef, { player_active: isActive });
+    console.log("Estado do player atualizado com sucesso");
+  } catch (error) {
+    console.error("Erro ao atualizar o estado do player: ", error);
+  }
+};
 

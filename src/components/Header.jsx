@@ -4,8 +4,11 @@ import './Header.css';
 import { useAuth } from '../contexts/AuthContext';
 import Player from '../components/Player';
 import PedidoDeOracaoIMG from '../../src/pedido_de_oracao.png';
+import { usePlayer } from '../contexts/PlayerContext'; // Usando o contexto do player
+
 
 function Header() {
+  const { isPlayerActive } = usePlayer(); // Acessando o estado do player  
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [email, setEmail] = useState('');
@@ -73,11 +76,11 @@ function Header() {
               <li><button onClick={toggleModal} className="login-button">Login</button></li>
             )}
 
-            
+
           </ul>
         </nav>
 
-        <Player />
+        {isPlayerActive && <Player />}
         <button className="menu-button" onClick={toggleMenu}>
           ☰
         </button>
