@@ -6,7 +6,6 @@ import './ListagemDeMensagens.css'
 const ListagemDeMensagens = () => {
   const [mensagens, setMensagens] = useState([]);
   const [mensagemAberta, setMensagemAberta] = useState(null);
-  const [mensagemExcluir, setMensagemExcluir] = useState(null); // Estado para armazenar a mensagem a ser excluída
 
   // Função para buscar mensagens do banco de dados
   useEffect(() => {
@@ -26,21 +25,20 @@ const ListagemDeMensagens = () => {
     buscarMensagens();
   }, []);
 
-  // Função para excluir mensagem do Firestore
-  const excluirMensagem = async () => {
-    if (!mensagemExcluir) return;
+  // Função para excluir mensagem do Firestore.
+  // Recebe o id por parâmetro (não depende do estado, que é assíncrono).
+  const excluirMensagem = async (id) => {
+    if (!id) return;
 
     try {
-      console.log("Excluindo mensagem com ID:", mensagemExcluir);  // Log para depuração
-
       // Excluir do Firestore
-      await deleteDoc(doc(db, "Mensagens-recebidas", mensagemExcluir)); // Deletar documento da coleção correta
+      await deleteDoc(doc(db, 'Mensagens-recebidas', id)); // Deletar documento da coleção correta
 
       // Atualizar lista local
-      setMensagens(mensagens.filter((mensagem) => mensagem.id !== mensagemExcluir));
-      setMensagemExcluir(null); // Limpa a ID da mensagem após a exclusão
+      setMensagens((lista) => lista.filter((mensagem) => mensagem.id !== id));
     } catch (error) {
-      console.error("Erro ao excluir mensagem:", error);
+      console.error('Erro ao excluir mensagem:', error);
+      alert(`Não foi possível excluir a mensagem: ${error.message}`);
     }
   };
 
@@ -57,10 +55,9 @@ const ListagemDeMensagens = () => {
   // Função para solicitar confirmação de exclusão
   const confirmarExclusao = (id) => {
     // Exibe uma caixa de confirmação
-    const confirmar = window.confirm("Tem certeza de que deseja excluir esta mensagem?");
+    const confirmar = window.confirm('Tem certeza de que deseja excluir esta mensagem?');
     if (confirmar) {
-      setMensagemExcluir(id); // Se confirmado, guarda o id da mensagem
-      excluirMensagem(); // Exclui a mensagem do Firestore e atualiza a lista
+      excluirMensagem(id); // Exclui a mensagem do Firestore e atualiza a lista
     }
   };
 

@@ -1,125 +1,348 @@
+/* src/components/Header.css */
+
+/* =========================================================
+   1. Barra de navegação (sticky)
+   ========================================================= */
 .header {
-  background-color: #21115C;
-  padding: 20px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 5000;
+  background: linear-gradient(90deg, #21115c 0%, #2e1a75 100%);
+  box-shadow: 0 0 0 rgba(15, 23, 42, 0);
+  transition: box-shadow 0.25s ease;
+}
+
+.header--scrolled {
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.28);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 10px 24px;
+  box-sizing: border-box;
+}
+
+.header__nav {
   display: flex;
   justify-content: center;
-  align-items: center;
-  position: relative;
-  box-sizing: border-box;
-  z-index: 5000;
 }
 
 .nav-links {
   list-style: none;
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 50px;
+  gap: 6px;
   margin: 0;
   padding: 0;
 }
 
-.pedido-oracao {
-  text-align: center;
+/* =========================================================
+   2. Links de navegação (pills)
+   ========================================================= */
+.nav-links li a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  color: rgba(255, 255, 255, 0.86);
+  text-decoration: none;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: background-color 0.15s ease, color 0.15s ease;
 }
 
-.pedido-oracao-img {
-  width: 50px; /* Ajuste o tamanho da imagem conforme necessário */
-  height: 50px;
-  display: block;
-  margin: 0 auto;
-}
-
-.pedido-oracao p {
-  margin-top: 5px;
-  font-size: 14px;
+.nav-links li a:hover {
+  background-color: rgba(255, 255, 255, 0.12);
   color: #ffffff;
 }
 
-
-#email, #password{
-  width: 90%;
+/* Página atual */
+.nav-links li a.nav-link--active {
+  background-color: #1b0d4d;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(231, 57, 105, 0.35);
 }
 
-.close-button{
-  background-color: #8b8b8b;
+/* Destaque: Pedido de Oração */
+.pedido-oracao-img {
+  width: 30px;
+  height: 30px;
+  display: block;
+  border-radius: 50%;
 }
 
-.modal-content h2{
-  text-align: center;
+.pedido-oracao a span {
+  font-size: 0.8rem;
+  line-height: 1.2;
 }
 
-.nav-links li a, 
-.nav-links li button {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: large;
-  background: none;
-  border: none;
+/* Botão de acesso */
+.login-button {
+  padding: 10px 18px;
+  border: 1px solid #e73969;
+  border-radius: 10px;
+  background-color: #e73969;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
   cursor: pointer;
-  font-family: 'Roboto', sans-serif;
+  transition: background-color 0.15s ease, transform 0.15s ease;
 }
 
-.nav-links li a:hover, 
-.nav-links li button:hover {
-  text-decoration: underline;
+.login-button:hover {
+  background-color: #cc174a;
+  border-color: #cc174a;
+  transform: translateY(-1px);
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
+/* =========================================================
+   3. Player de rádio no header
+   ========================================================= */
+.header__player {
+  display: flex;
+  align-items: center;
+}
+
+/* Neutraliza o espaçamento/altura fixos do Player.css dentro do header */
+.header .playerPrincipal {
+  height: auto;
+  margin-left: 0;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 999px;
+  gap: 0;
+}
+
+.header .playerPrincipal .botoes {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+
+/* =========================================================
+   4. Botão do menu (mobile)
+   ========================================================= */
+.menu-button {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.menu-button:hover,
+.menu-button--open {
+  background-color: rgba(255, 255, 255, 0.16);
+}
+
+/* =========================================================
+   5. Responsivo — menu em dropdown
+   ========================================================= */
+@media (max-width: 900px) {
+  .header__inner {
+    justify-content: space-between;
+    padding: 10px 16px;
+  }
+
+  .menu-button {
+    display: inline-flex;
+  }
+
+  .header__nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 12px 16px 16px;
+    background: linear-gradient(180deg, #2e1a75 0%, #21115c 100%);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 16px 32px rgba(15, 23, 42, 0.35);
+  }
+
+  .header__nav.show {
+    display: block;
+    animation: menuFade 0.18s ease;
+  }
+
   .nav-links {
     flex-direction: column;
-    gap: 20px;
-    background-color: #222222;
-    position: absolute;
-    top: 100%;
-    left: 0;
+    align-items: stretch;
+    gap: 6px;
+  }
+
+  .nav-links li a {
     width: 100%;
-    display: none; /* Esconde o menu inicialmente */
-    padding: 20px 0;
+    padding: 12px 14px;
   }
 
-  .nav-links.show {
-    display: flex; /* Exibe o menu quando ativado */
+  .pedido-oracao a {
+    justify-content: flex-start;
   }
 
-  .menu-button {
-    width: 12%;
-    margin-left: 50%;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.8rem;
-    cursor: pointer;
-    z-index: 1000;
+  .header__player {
+    margin-left: auto;
   }
-  .header {
-    padding: 10px 5%; /* Reduz o espaçamento lateral */
+
+  .header .playerPrincipal {
+    padding: 6px 10px;
   }
-  
+
+  .header .playerPrincipal .botoes {
+    width: 2.1rem;
+    height: 2.1rem;
+  }
 }
 
-@media (min-width: 768px) {
-  .menu-button {
-    width: 12%;
-    flex-direction: column;
-    gap: 20px;
-    background-color: #21115C;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    display: none; /* Esconde o menu inicialmente */
-    padding: 20px 0;
+@keyframes menuFade {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
   }
-  
-  
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-@media (max-width: 480px) {
-  .menu-button {
-    width: 20%;
-    margin-right: 15%;
+
+/* =========================================================
+   6. Modal de login
+   ========================================================= */
+.login-modal-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background-color: rgba(15, 18, 25, 0.6);
+  z-index: 6000;
+  animation: loginFade 0.18s ease;
+}
+
+.login-modal {
+  width: 100%;
+  max-width: 380px;
+  padding: 28px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.35);
+  animation: loginPop 0.18s ease;
+}
+
+.login-modal h2 {
+  margin: 0 0 4px;
+  font-size: 1.35rem;
+  color: #0f1219;
+  text-align: left;
+}
+
+.login-modal__subtitulo {
+  margin: 0 0 20px;
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+.login-modal .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.login-modal .form-group label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+.login-modal input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px 12px;
+  border: 1px solid #dbe1ea;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.login-modal input:focus {
+  border-color: #e73969;
+  box-shadow: 0 0 0 3px rgba(231, 57, 105, 0.15);
+}
+
+.login-modal .submit-button {
+  width: 100%;
+  margin-top: 4px;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background-color: #e73969;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.login-modal .submit-button:hover {
+  background-color: #cc174a;
+}
+
+.login-modal .close-button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background-color: #ffffff;
+  color: #64748b;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.login-modal .close-button:hover {
+  background-color: #f8fafc;
+  color: #334155;
+}
+
+@keyframes loginFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
+
+@keyframes loginPop {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+

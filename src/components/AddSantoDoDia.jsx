@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { db, storage } from '../firebaseConfig';
-import { collection, addDoc, getDocs, deleteDoc, doc } from 'firebase/firestore';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { collection, addDoc, getDocs, deleteDoc } from 'firebase/firestore';
+import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
 import './AddSantoDoDia.css';
 
 function SantoDoDia() {
@@ -10,6 +10,7 @@ function SantoDoDia() {
   const [imagem, setImagem] = useState(null);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const fileInputRef = useRef(null);
 
   const handleImageChange = (e) => {
     if (e.target.files[0]) {
@@ -25,16 +26,24 @@ function SantoDoDia() {
     }
 
     setLoading(true);
+    setSuccess(false);
 
     try {
-      // Apagar os dados existentes
       const santoCollection = collection(db, 'SantoDoDia');
+
+      // Guarda os documentos antigos (com a URL da imagem) ANTES de subir o novo.
+      // A exclusão só acontece DEPOIS que o novo já está salvo.
       const snapshot = await getDocs(santoCollection);
-      const deletePromises = snapshot.docs.map((doc) => deleteDoc(doc.ref));
-      await Promise.all(deletePromises);
+      const docsAntigos = snapshot.docs.map((d) => ({
+        ref: d.ref,
+        imagemUrl: d.data()?.imagem,
+      }));
+
+      // Nome único (timestamp + nome original) para evitar colisão/cache de URL
+      const fileName = `${Date.now()}_${imagem.name.replace(/\s+/g, '_')}`;
 
       // Upload da imagem para o Storage do Firebase
-      const imageRef = ref(storage, `SantoDoDia/${imagem.name}`);
+      const imageRef = ref(storage, `SantoDoDia/${fileName}`);
       await uploadBytes(imageRef, imagem);
       const imageUrl = await getDownloadURL(imageRef);
 
@@ -46,13 +55,42 @@ function SantoDoDia() {
         data: new Date(),
       });
 
+      // Apagar os documentos antigos do Firestore (melhor esforço)
+      for (const antigo of docsAntigos) {
+        try {
+          await deleteDoc(antigo.ref);
+        } catch (deleteError) {
+          console.warn(
+            'Não foi possível excluir o documento antigo do Santo do Dia:',
+            deleteError.message
+          );
+        }
+      }
+
+      // Apagar as imagens antigas do Storage (melhor esforço: falha não quebra o envio)
+      for (const antigo of docsAntigos) {
+        if (!antigo.imagemUrl || antigo.imagemUrl === imageUrl) continue;
+        try {
+          await deleteObject(ref(storage, antigo.imagemUrl));
+          console.log('Imagem antiga do Santo do Dia excluída do Storage.');
+        } catch (deleteError) {
+          console.warn(
+            'Não foi possível excluir a imagem antiga do Storage:',
+            deleteError.message
+          );
+        }
+      }
+
       setNome('');
       setDescricao('');
       setImagem(null);
+      if (fileInputRef.current) {
+        fileInputRef.current.value = ''; // permite reenviar o mesmo arquivo
+      }
       setSuccess(true);
     } catch (error) {
       console.error('Erro ao salvar o Santo do Dia:', error);
-      alert('Erro ao salvar os dados. Por favor, tente novamente.');
+      alert(`Erro ao salvar os dados: ${error.message}`);
     }
 
     setLoading(false);
@@ -80,7 +118,7 @@ function SantoDoDia() {
           />
         </div>
         <div className="form-group">
-          <input type="file" id="imagem" accept="image/*" onChange={handleImageChange} />
+          <input type="file" id="imagem" accept="image/*" ref={fileInputRef} onChange={handleImageChange} />
         </div>
         <button type="submit" disabled={loading}>
           {loading ? 'Salvando...' : 'Salvar'}

@@ -1,46 +1,199 @@
+/* src/pages/Dashboard.css */
+
+/* Fonte do painel (mesma do site) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* =========================================================
+   1. Estrutura geral
+   ========================================================= */
 .dashboard {
-  padding: 20px;
-  text-align: center;
+  min-height: 60vh;
+  padding: 32px 24px 56px;
+  background-color: #f8f9fc;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+  color: #0f1219;
+  text-align: left;
 }
 
-.dashboard-columns {
+/* =========================================================
+   2. Cabeçalho do painel
+   ========================================================= */
+.dashboard-header {
   display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
   justify-content: space-between;
-  gap: 20px; /* Espaçamento entre as colunas */
-  margin-top: 20px;
+  gap: 24px;
+  max-width: 1280px;
+  margin: 0 auto 24px;
 }
 
-.column {
-  flex: 1; /* Faz as colunas terem tamanhos iguais */
-  background-color: #f4f4f4;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.dashboard-header__sobre {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #94a3b8;
 }
 
-h1, h2 {
-  font-size: 1.5rem;
+.dashboard-header h1 {
+  margin: 6px 0 8px;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #0f1219;
+}
+
+.dashboard-header p {
+  margin: 0;
+  max-width: 640px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #64748b;
+}
+
+/* Card de status do player */
+.player-toggle {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 18px;
+  background: #ffffff;
+  border: 1px solid #eef2f7;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
+}
+
+.player-toggle__info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.player-toggle__titulo {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #334155;
+}
+
+.player-toggle__status {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+.player-toggle__status--ativo {
+  color: #16a34a;
+}
+
+/* =========================================================
+   3. Abas de navegação
+   ========================================================= */
+.dashboard-tabs {
+  display: flex;
+  gap: 4px;
+  max-width: 1280px;
+  margin: 0 auto 24px;
+  overflow-x: auto;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* Regras explícitas para neutralizar o CSS global de `button`
+   existente em AddBannerPrincipal.css */
+.dashboard-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: auto;
+  padding: 12px 18px;
+  margin-bottom: -1px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #64748b;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.dashboard-tab:hover {
+  color: #0f1219;
+}
+
+.dashboard-tab--ativa {
+  color: #e73969;
+  border-bottom-color: #e73969;
+}
+
+/* =========================================================
+   4. Grid de painéis
+   ========================================================= */
+.dashboard-conteudo {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.painel-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 24px;
+  align-items: start;
+}
+
+/* Abas com um único painel largo (ex.: Eventos) */
+.painel-grid--estreito {
+  grid-template-columns: minmax(0, 640px);
+}
+
+.painel {
+  padding: 24px;
+  background: #ffffff;
+  border: 1px solid #eef2f7;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+  transition: box-shadow 0.2s ease;
+}
+
+.painel:hover {
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
+}
+
+.painel__header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
   margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f1f5f9;
 }
 
-.column h2 {
-  font-size: 1.2rem;
-  margin-bottom: 10px;
+.painel__icone {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background-color: #fdf2f6;
+  color: #e73969;
 }
 
-.column p {
-  font-size: 1rem;
-  color: #555;
+.painel__titulo h2 {
+  margin: 0 0 4px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0f1219;
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
-  .dashboard-columns {
-    flex-direction: column; /* Empilha as colunas no mobile */
-    gap: 15px; /* Reduz o espaçamento no mobile */
-  }
-
-  .column {
-    flex: 1 1 100%; /* Cada coluna ocupa toda a largura disponível */
-  }
+.painel__titulo p {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: #64748b;
 }

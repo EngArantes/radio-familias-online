@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { storage, db } from '../firebaseConfig';
 import { ref, uploadBytesResumable, getDownloadURL, deleteObject } from 'firebase/storage';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
@@ -9,6 +9,11 @@ function AddLeftRightBanners({ bannerType }) {
   const [uploading, setUploading] = useState(false);
   const [progress, setProgress] = useState(0);
   const [imageUrl, setImageUrl] = useState('');
+  const fileInputRef = useRef(null);
+
+  // ID único por banner: evita que o <label> abra o input de OUTRO formulário
+  // (todos usavam id="file" e o navegador apontava sempre para o primeiro).
+  const inputId = `file-${bannerType}`;
 
   // Carregar a URL atual do banner ao montar o componente
   useEffect(() => {
@@ -30,6 +35,7 @@ function AddLeftRightBanners({ bannerType }) {
     if (selectedFile && selectedFile.type.startsWith('image/')) {
       setFile(selectedFile);
     } else {
+      e.target.value = '';
       alert('Por favor, selecione um arquivo de imagem válido.');
     }
   };
@@ -42,18 +48,18 @@ function AddLeftRightBanners({ bannerType }) {
       return;
     }
 
+    // Guarda a URL atual ANTES de enviar para excluir depois do upload com sucesso
+    const previousImageUrl = imageUrl;
+
     try {
       setUploading(true);
+      setProgress(0);
 
-      // Se já existe um banner anterior, exclua-o do Storage
-      if (imageUrl) {
-        const previousRef = ref(storage, imageUrl);
-        await deleteObject(previousRef);
-        console.log('Banner anterior excluído com sucesso.');
-      }
+      // Nome único (timestamp + nome original) para evitar colisão/cache de URL
+      const fileName = `${Date.now()}_${file.name.replace(/\s+/g, '_')}`;
 
       // Fazer o upload do novo banner
-      const storageRef = ref(storage, `banners/${bannerType}/${file.name}`);
+      const storageRef = ref(storage, `banners/${bannerType}/${fileName}`);
       const uploadTask = uploadBytesResumable(storageRef, file);
 
       uploadTask.on(
@@ -66,20 +72,43 @@ function AddLeftRightBanners({ bannerType }) {
         },
         (error) => {
           console.error('Erro ao fazer upload:', error);
-          alert('Erro ao fazer upload da imagem.');
+          alert(`Erro ao fazer upload da imagem: ${error.message}`);
           setUploading(false);
         },
         async () => {
-          const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
-          await setDoc(doc(db, 'banners', bannerType), {
-            imageUrl: downloadURL,
-          });
+          try {
+            const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+            await setDoc(doc(db, 'banners', bannerType), {
+              imageUrl: downloadURL,
+            });
 
-          setImageUrl(downloadURL);
-          setFile(null);
-          setProgress(0);
-          setUploading(false);
-          alert('Imagem carregada com sucesso!');
+            // A imagem antiga só é excluída DEPOIS que a nova já está salva.
+            // Se a exclusão falhar, apenas avisamos no console (não quebra o envio).
+            if (previousImageUrl) {
+              try {
+                await deleteObject(ref(storage, previousImageUrl));
+                console.log('Banner anterior excluído com sucesso.');
+              } catch (deleteError) {
+                console.warn(
+                  'Não foi possível excluir o banner anterior:',
+                  deleteError.message
+                );
+              }
+            }
+
+            setImageUrl(downloadURL);
+            setFile(null);
+            setProgress(0);
+            if (fileInputRef.current) {
+              fileInputRef.current.value = ''; // permite reenviar o mesmo arquivo
+            }
+            alert('Imagem carregada com sucesso!');
+          } catch (error) {
+            console.error('Erro ao salvar o banner:', error);
+            alert(`Erro ao salvar o banner: ${error.message}`);
+          } finally {
+            setUploading(false);
+          }
         }
       );
     } catch (error) {
@@ -93,10 +122,11 @@ function AddLeftRightBanners({ bannerType }) {
     <div className="add-banner">
       <form onSubmit={handleUpload}>
         <div className="form-group">
-          <label htmlFor="file">Selecione a imagem:</label>
+          <label htmlFor={inputId}>Selecione a imagem:</label>
           <input
             type="file"
-            id="file"
+            id={inputId}
+            ref={fileInputRef}
             accept="image/*"
             onChange={handleFileChange}
           />

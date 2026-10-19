@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { db, storage } from '../firebaseConfig';
-import { collection, addDoc, query, where, getDocs, deleteDoc, doc } from 'firebase/firestore';
-import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { collection, addDoc, deleteDoc, doc } from 'firebase/firestore';
+import { ref as storageRef, uploadBytes, getDownloadURL } from 'firebase/storage';
 import './AddEventos.css';
 
 const AddEventos = () => {

@@ -21,6 +21,7 @@
     gap: 15px;
 }
 
+
 .santo-do-dia .santo-details h3 {
     font-size: 1.2rem;
     color: #E73969;
@@ -30,7 +31,7 @@
     max-width: 100%;
     max-height: 300px;
     border-radius: 8px;
-    border: 1px solid #ddd;
+    border: 1px solid #ddd;    
 }
 
 .santoImagem{

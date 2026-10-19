@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+// src/pages/Home.jsx
+import React from 'react';
 import './Home.css';
 import BannerPrincipal from '../components/BannerPrincipal';
 import LeftBanner from '../components/BannerEsquerda';
@@ -8,46 +9,62 @@ import MensagemDoDia from '../components/MensagemDoDiaExibicao';
 import SantoDoDia from '../components/SantoDoDia';
 
 function Home() {
-  const [videos, setVideos] = useState([
-  ]);
-
-  useEffect(() => {
-    fetch('/api/videos')
-      .then((response) => response.json())
-      .then((data) => setVideos(data));
-  }, []);
-
   return (
-    <div className="home">
-      <div className="content-grid">
-        <div className='colunaEsquerda'>
-          {/* Coluna Esquerda */}
-          <LeftBanner />
-        </div>
+    <main className="home">
+      {/* Conteúdo principal em 3 colunas: laterais fixas + coluna central */}
+      <section className="content-grid">
+        {/* Coluna esquerda */}
+        <aside className="colunaEsquerda">
+          <div className="banner-lateral-wrapper banner-lateral-wrapper--esquerda">
+            <span className="banner-lateral-label">Oração</span>
+            <LeftBanner />
+          </div>
+        </aside>
 
-        {/* Coluna Central */}
+        {/* Coluna central */}
         <div className="colunaCentral">
-
           <BannerPrincipal />
-          <h2>Evangelizando através das ondas da internet!</h2>
-          <MensagemDoDia />
-          <SantoDoDia />
+
+          <div className="titulo-principal">
+            <h2>Evangelizando através das ondas da internet!</h2>
+            <p>
+              Música, fé e oração para o seu dia — ouça a Rádio Famílias Online
+              de onde você estiver.
+            </p>
+          </div>
+
+          <div className="conteudo-card">
+            <MensagemDoDia />
+          </div>
+
+          <div className="conteudo-card">
+            <SantoDoDia />
+          </div>
         </div>
 
-        <div className='colunaDireita'>
-        {/* Coluna Direita */}
-        <RightBanner />
-        </div>
-      </div>
+        {/* Coluna direita */}
+        <aside className="colunaDireita">
+          <div className="banner-lateral-wrapper banner-lateral-wrapper--direita">
+            <span className="banner-lateral-label">Fé</span>
+            <RightBanner />
+          </div>
+        </aside>
+      </section>
 
-      <div className="video-column">
-        <h2 className='TituloVideosDestaque'>Vídeos em destaque</h2>
-        <div className='VideosDestaque'>
+      {/* Seção de vídeos em destaque (full-width) */}
+      <section className="video-section">
+        <div className="video-section__header">
+          <h2 className="TituloVideosDestaque">Vídeos em destaque</h2>
+          <p className="video-section__subtitulo">
+            Assista às últimas pregações e programas
+          </p>
+        </div>
+
+        <div className="video-section__content">
           <VideosDestaque />
         </div>
-
-      </div>
-    </div>
+      </section>
+    </main>
   );
 }
 

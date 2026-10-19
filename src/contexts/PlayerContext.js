@@ -1,7 +1,7 @@
 // src/contexts/PlayerContext.js
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { db, doc, getDoc, setDoc, getPlayerState, updatePlayerState } from '../firebaseConfig'; // Corrigindo a importação
+import { getPlayerState, updatePlayerState } from '../firebaseConfig';
 
 const PlayerContext = createContext();
 

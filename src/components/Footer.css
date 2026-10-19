@@ -1,56 +1,181 @@
+/* src/components/Footer.css */
+
 .footer {
-  background-color: #21115C;
-  color: white;
-  font-family: 'Roboto', sans-serif;
-  padding: 20px 0;
-  text-align: center;
+  width: 100%;
+  background: linear-gradient(135deg, #21115c 0%, #2e1a75 100%);
+  color: #e6e2f5;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
 }
 
-.footer-content {
-  max-width: 1200px;
+.footer__inner {
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 0 20px; /* Adiciona espaçamento lateral em telas menores */
+  padding: 48px 24px 36px;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 40px;
+  align-items: start;
 }
 
-.social-links {
-  margin-bottom: 10px;
-  display: flex; /* Torna os links flexíveis */
-  justify-content: center; /* Centraliza os links */
-  flex-wrap: wrap; /* Permite que os links quebrem linha em telas menores */
-  gap: 15px; /* Espaçamento entre os links */
+/* ---------- Marca ---------- */
+
+.footer__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 10px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
 }
 
-.social-links a {
-  color: white;
-  margin: 0 10px;
+.footer__logo-icone {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: #e73969;
+  color: #ffffff;
+  font-size: 1rem;
+  box-shadow: 0 4px 14px rgba(231, 57, 105, 0.45);
+}
+
+.footer__tagline {
+  margin: 0 0 20px;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #c3bce0;
+}
+
+.footer__social {
+  display: flex;
+  gap: 12px;
+}
+
+.footer__social-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.15rem;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   text-decoration: none;
-  font-size: 1.2rem; /* Tamanho da fonte ajustado */
+  transition: background-color 0.2s ease, transform 0.2s ease,
+    border-color 0.2s ease;
 }
 
-.social-links a:hover {
-  color: #ff5c8d; /* Cor de destaque no hover */
+.footer__social-btn:hover {
+  background: #e73969;
+  border-color: #e73969;
+  transform: translateY(-2px);
 }
 
-.footer p {
-  margin-top: 10px;
-  font-size: 0.9em;
+/* ---------- Colunas de links ---------- */
+
+.footer__titulo {
+  margin: 0 0 16px;
+  padding-bottom: 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ffffff;
+  border-bottom: 2px solid #c9a84c;
+  display: inline-block;
 }
 
-/* Responsividade */
+.footer__links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer__links a {
+  color: #c3bce0;
+  text-decoration: none;
+  font-size: 0.92rem;
+  transition: color 0.2s ease, padding-left 0.2s ease;
+}
+
+.footer__links a:hover {
+  color: #ffffff;
+  padding-left: 4px;
+}
+
+.footer__topo {
+  margin-top: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.footer__topo:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+/* ---------- Barra inferior ---------- */
+
+.footer__bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.footer__bottom p {
+  margin: 0;
+  font-size: 0.82rem;
+  color: #a89fcb;
+}
+
+.footer__bottom {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.footer__creditos {
+  font-style: italic;
+}
+
+/* ---------- Responsivo ---------- */
+
 @media (max-width: 768px) {
-  .footer-content {
-    padding: 0 10px; /* Reduz o espaçamento lateral em telas menores */
+  .footer__inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 36px 20px 28px;
   }
 
-  .social-links {
-    gap: 10px; /* Reduz o espaçamento entre os links */
-  }
-
-  .social-links a {
-    font-size: 1rem; /* Ajusta o tamanho da fonte dos links */
-  }
-
-  .footer p {
-    font-size: 0.8em; /* Reduz o tamanho da fonte do texto no rodapé */
+  .footer__bottom {
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    padding: 16px 20px;
   }
 }
