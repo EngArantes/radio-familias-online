@@ -84,10 +84,22 @@ function AddLeftRightBanners({ bannerType }) {
 
             // A imagem antiga só é excluída DEPOIS que a nova já está salva.
             // Se a exclusão falhar, apenas avisamos no console (não quebra o envio).
-            if (previousImageUrl) {
+            if (previousImageUrl && previousImageUrl !== downloadURL) {
               try {
-                await deleteObject(ref(storage, previousImageUrl));
-                console.log('Banner anterior excluído com sucesso.');
+                // Extrai o caminho do arquivo a partir da URL de download
+                // (mais confiável que passar a URL completa para ref()).
+                const caminhoAntigo = decodeURIComponent(
+                  previousImageUrl.split('/o/')[1]?.split('?')[0] ?? ''
+                );
+                if (caminhoAntigo) {
+                  await deleteObject(ref(storage, caminhoAntigo));
+                  console.log('Banner anterior excluído com sucesso.');
+                } else {
+                  console.warn(
+                    'Não foi possível identificar o arquivo do banner anterior:',
+                    previousImageUrl
+                  );
+                }
               } catch (deleteError) {
                 console.warn(
                   'Não foi possível excluir o banner anterior:',

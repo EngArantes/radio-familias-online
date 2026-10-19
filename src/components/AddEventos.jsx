@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { db, storage } from '../firebaseConfig';
-import { collection, addDoc, deleteDoc, doc } from 'firebase/firestore';
-import { ref as storageRef, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { collection, addDoc, deleteDoc, doc, getDoc } from 'firebase/firestore';
+import { ref as storageRef, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
 import './AddEventos.css';
 
 const AddEventos = () => {
@@ -27,9 +27,10 @@ const AddEventos = () => {
         try {
             let imageUrl = '';
 
-            // Se houver imagem, faça o upload
+            // Se houver imagem, faça o upload (nome único para evitar colisão)
             if (imagem) {
-                const imageRef = storageRef(storage, `eventos/${imagem.name}`);
+                const nomeSeguro = imagem.name.replace(/\s+/g, '_');
+                const imageRef = storageRef(storage, `eventos/${Date.now()}_${nomeSeguro}`);
                 await uploadBytes(imageRef, imagem);
                 imageUrl = await getDownloadURL(imageRef);
             }
@@ -54,7 +55,23 @@ const AddEventos = () => {
 
             setTimeout(async () => {
                 try {
-                    await deleteDoc(doc(db, 'eventos', docRef.id));
+                    const snap = await getDoc(doc(db, 'eventos', docRef.id));
+                    if (snap.exists()) {
+                        const imagemUrl = snap.data()?.imagem;
+                        await deleteDoc(doc(db, 'eventos', docRef.id));
+                        // Exclui a imagem do Storage junto (melhor esforço)
+                        if (imagemUrl) {
+                            try {
+                                const parte = imagemUrl.split('/o/')[1]?.split('?')[0] ?? '';
+                                const caminho = decodeURIComponent(parte);
+                                if (caminho) {
+                                    await deleteObject(storageRef(storage, caminho));
+                                }
+                            } catch (imgError) {
+                                console.warn('Não foi possível excluir a imagem do evento:', imgError.message);
+                            }
+                        }
+                    }
                     console.log('Evento excluído após 2 semanas.');
                 } catch (deleteError) {
                     console.error('Erro ao excluir evento:', deleteError);

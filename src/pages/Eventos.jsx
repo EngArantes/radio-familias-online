@@ -1,10 +1,31 @@
 import './Eventos.css';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'; // Para navegação
-import { db } from '../firebaseConfig';
+import { db, storage } from '../firebaseConfig';
 import { collection, getDocs, doc, deleteDoc } from 'firebase/firestore';
+import { ref, deleteObject } from 'firebase/storage';
 import { useAuth } from '../contexts/AuthContext'; // Usando o contexto de autenticação
 
+const extrairCaminhoStorage = (url) => {
+  if (!url) return '';
+  try {
+    const parte = url.split('/o/')[1]?.split('?')[0] ?? '';
+    return decodeURIComponent(parte);
+  } catch {
+    return '';
+  }
+};
+
+const excluirImagemEvento = async (imagemUrl) => {
+  const caminho = extrairCaminhoStorage(imagemUrl);
+  if (!caminho) return;
+  try {
+    await deleteObject(ref(storage, caminho));
+    console.log('Imagem do evento excluída com sucesso.');
+  } catch (error) {
+    console.warn('Não foi possível excluir a imagem do evento:', error.message);
+  }
+};
 const formatarData = (valor) => {
   if (!valor) return 'Data a definir';
   const data = new Date(valor);
@@ -73,13 +94,17 @@ const EventosList = () => {
     }
   };
 
-  // Função para excluir o evento do Firestore
+  // Função para excluir o evento do Firestore (e a imagem do Storage)
   const handleExcluirEvento = async (id) => {
     if (!id || excluindo) return;
     setExcluindo(true);
     try {
+      const evento = eventos.find((item) => item.id === id);
       const eventoRef = doc(db, 'eventos', id);
       await deleteDoc(eventoRef);
+      // A imagem só é excluída DEPOIS que o documento foi removido.
+      // Se a exclusão falhar, apenas avisamos no console (não quebra a exclusão).
+      await excluirImagemEvento(evento?.imagem);
       setEventos((lista) => lista.filter((evento) => evento.id !== id));
       setConfirmacaoExclusao(null);
     } catch (error) {
