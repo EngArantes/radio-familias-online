@@ -109,7 +109,7 @@ function Header() {
             {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
 
-          <nav className="header__nav" aria-label="Navegação principal">
+          <nav className={`header__nav${isMenuOpen ? ' header__nav--open' : ''}`} aria-label="Navegação principal">
             <ul
               id="menu-principal"
               className={`nav-links${isMenuOpen ? ' show' : ''}`}

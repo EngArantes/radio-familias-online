@@ -164,6 +164,11 @@
 
   .header__nav {
     display: none;
+
+  .header__nav.header__nav--open {
+    display: block;
+  }
+
     position: absolute;
     top: 100%;
     left: 0;
