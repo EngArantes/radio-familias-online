@@ -53,6 +53,9 @@
 
 /* Para dispositivos móveis, independentemente do tamanho */
 @media (max-width: 768px) {
+  .video-section{
+    display:none;
+  }
   .video-grid {
     grid-template-columns: repeat(2, 1fr); /* 2 colunas em dispositivos móveis */
   }

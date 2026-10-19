@@ -285,12 +285,12 @@
     padding: 0 16px;
   }
 
-  /* Mobile: grade de 2 colunas (padrão de portais), sem rolagem lateral */
+  /* Mobile: 4 miniaturas por linha, bem pequenas */
   .video-section .video-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     justify-content: center;
-    gap: 12px;
+    gap: 8px;
     overflow-x: visible;
     padding-bottom: 0;
   }
@@ -299,10 +299,16 @@
     flex: none;
     min-width: 0;
     max-width: none;
+    padding: 6px;
   }
 
   .video-section .video-grid .video-card iframe {
-    height: 150px;
+    height: 70px;
+  }
+
+  .video-section .video-grid .video-title {
+    font-size: 0.65rem;
+    margin-top: 6px;
   }
 
   .video-section .video-grid > p {
