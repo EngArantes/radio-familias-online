@@ -200,19 +200,20 @@
 
 /* O componente VideosDestaque traz fundo próprio #1B1B1B — aqui fica transparente */
 .video-section .videos-destaque {
-  display: flex;
-  justify-content: center;
+  display: block;
+  width: 100%;
   padding: 0;
   background-color: transparent;
 }
 
-/* Videos em uma unica linha, centralizados */
+/* Desktop: uma unica linha, centralizada */
 .video-section .video-grid {
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
   align-items: stretch;
   gap: 20px;
+  width: 100%;
 }
 
 .video-section .video-grid .video-card {
@@ -223,6 +224,7 @@
 
 .video-section .video-grid > p {
   flex: 1 1 100%;
+  text-align: center;
   color: #cbd5e1;
 }
 
@@ -233,6 +235,18 @@
   .content-grid {
     gap: 20px;
     padding: 24px 16px 40px;
+  }
+
+  /* Tablet: grade fluida com até 3 colunas, centralizada */
+  .video-section .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 300px));
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .video-section .video-grid .video-card {
+    max-width: none;
   }
 }
 
@@ -271,14 +285,36 @@
     padding: 0 16px;
   }
 
-  /* Uma unica linha tambem no mobile (rolagem horizontal se necessario) */
+  /* Mobile: grade de 2 colunas (padrão de portais), sem rolagem lateral */
   .video-section .video-grid {
-    justify-content: safe center;
-    overflow-x: auto;
-    padding-bottom: 8px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    justify-content: center;
+    gap: 12px;
+    overflow-x: visible;
+    padding-bottom: 0;
   }
 
   .video-section .video-grid .video-card {
-    flex: 0 0 240px;
+    flex: none;
+    min-width: 0;
+    max-width: none;
+  }
+
+  .video-section .video-grid .video-card iframe {
+    height: 150px;
+  }
+
+  .video-section .video-grid > p {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Telas muito estreitas: 1 coluna */
+@media (max-width: 420px) {
+  .video-section .video-grid {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 320px;
+    margin: 0 auto;
   }
 }
