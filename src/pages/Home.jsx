@@ -1,5 +1,6 @@
 // src/pages/Home.jsx
 import React from 'react';
+import Seo from '../components/Seo';
 import './Home.css';
 import BannerPrincipal from '../components/BannerPrincipal';
 import LeftBanner from '../components/BannerEsquerda';
@@ -11,6 +12,10 @@ import SantoDoDia from '../components/SantoDoDia';
 function Home() {
   return (
     <main className="home">
+      <Seo
+        description="Ouça a Rádio Famílias Online: música católica, oração, santo do dia, mensagem diária, eventos e vídeos. Evangelizando através das ondas da internet."
+        path="/"
+      />
       {/* Conteúdo principal em 3 colunas: laterais fixas + coluna central */}
       <section className="content-grid">
         {/* Coluna esquerda */}
@@ -26,7 +31,7 @@ function Home() {
           <BannerPrincipal />
 
           <div className="titulo-principal">
-            <h2>Evangelizando através das ondas da internet!</h2>
+            <h1>Evangelizando através das ondas da internet!</h1>
             <p>
               Música, fé e oração para o seu dia — ouça a Rádio Famílias Online
               de onde você estiver.

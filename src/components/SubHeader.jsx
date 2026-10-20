@@ -7,7 +7,7 @@ function Header() {
   return (
     <header className="SubHeader">
         <Link to="/">
-        <img className="logomarcaTop" src={Logomarca} alt="logomarca" />
+        <img className="logomarcaTop" src={Logomarca} alt="Logomarca da Rádio Famílias Online" />
         </Link>
          
       <img className='logomarcaDivino' src={LogomarcaDivino} alt="Logomarca-Divino-Espirito-Santo"/>

@@ -36,9 +36,9 @@ function SantoDoDiaDisplay() {
       ) : (
         santos.map((santo) => (
           <div className="santo-details" key={santo.id}>
-            <h1>Santo do dia</h1>
+            <h2>Santo do dia</h2>
             
-            {santo.imagem && <img src={santo.imagem} alt={santo.nome} className='santoImagem'/>}
+            {santo.imagem && <img src={santo.imagem} alt={`Imagem de ${santo.nome}, santo do dia`} className='santoImagem' loading="lazy" />}
             <h3>{santo.nome}</h3>
             <p className='textoSanto'>{santo.descricao}</p>
           </div>

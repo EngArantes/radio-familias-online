@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { collection, getDocs, updateDoc, doc, deleteDoc, setDoc } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 import { useAuth } from "../contexts/AuthContext";
+import Seo from '../components/Seo';
 import './VideoGallery.css';
 import Search from '../components/Search';
 
@@ -111,6 +112,11 @@ const VideoGallery = () => {
 
   return (
     <div className="video-gallery">
+      <Seo
+        title="Galeria de Vídeos"
+        description="Assista às pregações, programas e momentos de fé da Rádio Famílias Online. Busque por tema e compartilhe."
+        path="/videos-gallery"
+      />
       <Search videos={videos} onSearch={handleSearch} />
       <h1>Galeria de Vídeos</h1>
       <div className="video-grid">
@@ -118,7 +124,8 @@ const VideoGallery = () => {
           <div key={video.id} className="video-card">
             <iframe
               src={video.link.replace("watch?v=", "embed/")}
-              title={`Video ${video.id}`}
+              title={video.title ? `Vídeo: ${video.title} — Rádio Famílias Online` : 'Vídeo da Rádio Famílias Online'}
+              loading="lazy"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             ></iframe>

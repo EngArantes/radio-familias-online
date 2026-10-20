@@ -29,7 +29,7 @@ function RightBanner() {
   return (
     <div className="sidebar right">
       {imageUrl ? (
-        <img src={imageUrl} alt="Publicidade 2" className="advertisement" />
+        <img src={imageUrl} alt="Banner de apoio da Rádio Famílias Online — Fé" className="advertisement" loading="lazy" width="136" height="340" />
       ) : (
         <p>Carregando banner...</p>
       )}

@@ -5,6 +5,7 @@ import { db, storage } from '../firebaseConfig';
 import { collection, getDocs, doc, deleteDoc } from 'firebase/firestore';
 import { ref, deleteObject } from 'firebase/storage';
 import { useAuth } from '../contexts/AuthContext'; // Usando o contexto de autenticação
+import Seo from '../components/Seo';
 
 const extrairCaminhoStorage = (url) => {
   if (!url) return '';
@@ -122,6 +123,11 @@ const EventosList = () => {
 
   return (
     <main className="eventos-page">
+      <Seo
+        title="Eventos"
+        description="Agenda da Rádio Famílias Online: celebrações, encontros, retiros e momentos de fé da comunidade. Confira e participe."
+        path="/eventos"
+      />
       <div className="eventos__inner">
         <header className="eventos__cabecalho">
           <div className="eventos__titulo">

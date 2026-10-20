@@ -28,7 +28,7 @@ function LeftBanner() {
   return (
     <div className="sidebar left">
       {imageUrl ? (
-        <img src={imageUrl} alt="Publicidade 1" className="advertisement" />
+        <img src={imageUrl} alt="Banner de apoio da Rádio Famílias Online — Oração" className="advertisement" loading="lazy" width="136" height="340" />
       ) : (
         <p>Carregando banner...</p>
       )}

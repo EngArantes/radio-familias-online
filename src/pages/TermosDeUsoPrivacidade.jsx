@@ -1,9 +1,15 @@
 import React from "react";
+import Seo from "../components/Seo";
 import "./TermosDeUsoPrivacidade.css";
 
 const TermsAndPrivacy = () => {
     return (
         <div className="terms-container">
+            <Seo
+                title="Termos de Uso e Privacidade"
+                description="Termos de uso e política de privacidade da Rádio Famílias Online: como tratamos seus dados com transparência e segurança."
+                path="/politicas"
+            />
             <h1>Termos de Uso e Política de Privacidade</h1>
 
             <section>

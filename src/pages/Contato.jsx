@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { db } from '../firebaseConfig';
 import { collection, addDoc } from 'firebase/firestore';
+import Seo from '../components/Seo';
 import './Contato.css';
 
 const LIMITE_MENSAGEM = 300;
@@ -64,6 +65,11 @@ const Contato = () => {
 
   return (
     <main className="contato">
+      <Seo
+        title="Fale com a gente"
+        description="Entre em contato com a Rádio Famílias Online: envie sua mensagem, sugestão ou testemunho. Respondemos em breve."
+        path="/contato"
+      />
       <header className="contato__cabecalho">
         <h1>Fale com a gente</h1>
         <p>

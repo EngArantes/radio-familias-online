@@ -24,7 +24,7 @@ const BannerPrincipal = () => {
   return (
     <div className="banner-principal">
       {bannerImage ? (
-        <img src={bannerImage} alt="Banner Principal" className="banner-image" />
+        <img src={bannerImage} alt="Banner principal da Rádio Famílias Online" className="banner-image" fetchpriority="high" />
       ) : (
         <p>Carregando o banner...</p>
       )}

@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { db } from "../firebaseConfig";
 import { collection, addDoc } from "firebase/firestore";
+import Seo from '../components/Seo';
 import './PedidoDeOracao.css';
 import PedidoDeOracaoIMG from '../../src/pedido_de_oracao.png';
 
@@ -70,6 +71,11 @@ const PedidoDeOracao = () => {
 
   return (
     <main className="oracao">
+      <Seo
+        title="Pedido de oração"
+        description="Faça seu pedido de oração: nossa equipe estará intercedendo por você e sua família. Envie com sigilo e carinho."
+        path="/pedido-de-oracao"
+      />
       <header className="oracao__cabecalho">
         <h1>Pedido de oração</h1>
         <p>

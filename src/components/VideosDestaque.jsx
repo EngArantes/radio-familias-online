@@ -34,7 +34,8 @@ const VideosDestaque = () => {
             <div key={video.id} className="video-card">
               <iframe
                 src={video.link.replace("watch?v=", "embed/")}
-                title={`Video ${video.id}`}
+                title={video.title ? `Vídeo: ${video.title} — Rádio Famílias Online` : 'Vídeo da Rádio Famílias Online'}
+                loading="lazy"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               ></iframe>

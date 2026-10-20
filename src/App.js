@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext'; // Importe o AuthProvider
 import { PlayerProvider } from './contexts/PlayerContext'; // Importe o PlayerProvider
+import { HelmetProvider } from 'react-helmet-async';
 import Header from './components/Header';
 import Home from './pages/Home';
 import SubHeader from './components/SubHeader';
@@ -19,6 +20,7 @@ function App() {
   return (
     <AuthProvider> 
       <PlayerProvider> {/* Envolva o App com o PlayerProvider */}
+        <HelmetProvider>
         <Router>
           <div className="App">
             <SubHeader />
@@ -36,6 +38,7 @@ function App() {
             <Footer />
           </div>
         </Router>
+        </HelmetProvider>
       </PlayerProvider> {/* Fechando o PlayerProvider */}
     </AuthProvider>
   );

@@ -11,6 +11,7 @@ import SantoDoDia from '../components/AddSantoDoDia';
 import AddEventos from '../components/AddEventos';
 import ListagePedidosDeOracao from '../components/ListarPedidosDeOracao';
 import ToggleSwitch from '../components/SwitchPlayer';
+import Seo from '../components/Seo';
 // Importado por último para que os estilos do painel tenham precedência
 // sobre os estilos legados dos componentes filhos
 import './Dashboard.css';
@@ -45,6 +46,7 @@ function Dashboard() {
 
   return (
     <main className="dashboard">
+      <Seo title="Dashboard" path="/dashboard" noindex />
       {/* Cabeçalho do painel */}
       <header className="dashboard-header">
         <div className="dashboard-header__texto">

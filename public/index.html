@@ -1,23 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="/logo222.png" />
+    <link rel="icon" href="%PUBLIC_URL%/logo222.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#21115C" />
     <meta
       name="description"
-      content="Web site created using create-react-app"
+      content="Rádio Famílias Online — rádio católica online com música, oração, santo do dia, mensagem diária, eventos e vídeos. Evangelizando através das ondas da internet."
     />
-    <link rel="apple-touch-icon" href="/logo222.png" />
-    
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://radiofamiliasonline.com/" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo222.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    
-    <title>Rádio Famílias On-line</title>
+
+    <!-- Open Graph (WhatsApp, Facebook) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Rádio Famílias Online" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta
+      property="og:title"
+      content="Rádio Famílias Online | Evangelizando através das ondas da internet"
+    />
+    <meta
+      property="og:description"
+      content="Ouça a Rádio Famílias Online: música católica, oração, santo do dia, mensagem diária, eventos e vídeos para toda a família."
+    />
+    <meta property="og:url" content="https://radiofamiliasonline.com/" />
+    <meta property="og:image" content="https://radiofamiliasonline.com/logo222.png" />
+    <meta property="og:image:alt" content="Logomarca da Rádio Famílias Online" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Rádio Famílias Online | Evangelizando através das ondas da internet"
+    />
+    <meta
+      name="twitter:description"
+      content="Música católica, oração, santo do dia, eventos e vídeos. Ouça de onde você estiver."
+    />
+    <meta name="twitter:image" content="https://radiofamiliasonline.com/logo222.png" />
+
+    <!-- Fontes (preconnect + link direto, sem @import bloqueante no CSS) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Dados estruturados: emissora + site -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "RadioStation",
+        "name": "Rádio Famílias Online",
+        "url": "https://radiofamiliasonline.com/",
+        "logo": "https://radiofamiliasonline.com/logo222.png",
+        "description": "Rádio católica online com música, oração, santo do dia, mensagem diária, eventos e vídeos. Evangelizando através das ondas da internet.",
+        "broadcastDisplayName": "Rádio Famílias Online",
+        "inLanguage": "pt-BR"
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Rádio Famílias Online",
+        "url": "https://radiofamiliasonline.com/"
+      }
+    </script>
+
+    <title>Rádio Famílias Online | Evangelizando através das ondas da internet</title>
   </head>
   <body>
-    <noscript></noscript>
+    <noscript>Ative o JavaScript para ouvir a Rádio Famílias Online.</noscript>
     <div id="root"></div>
-   
   </body>
 </html>
