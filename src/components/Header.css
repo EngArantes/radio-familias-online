@@ -61,7 +61,7 @@
 }
 
 .nav-links li a.nav-link--active {
-  background-color: #e73969;
+  background-color: #1b0d4e;
   color: #ffffff;
   box-shadow: 0 4px 12px rgba(231, 57, 105, 0.35);
 }
@@ -141,6 +141,12 @@
   border-color: #e73969;
 }
 
+/* O ícone SVG do lucide fica no centro do botão: garante que o clique
+   nele borbulhe para o <button> em qualquer navegador mobile */
+.menu-button svg {
+  pointer-events: none;
+}
+
 /* 5. Responsivo (mobile) */
 @media (max-width: 900px) {
   .menu-button {
@@ -189,10 +195,13 @@
 
   .header__player {
     margin-left: auto;
+    min-width: 0;
+    flex: 0 1 auto;
   }
 
   .header .playerPrincipal {
     padding: 6px 10px;
+    max-width: 100%;
   }
 
   .header .playerPrincipal .botoes {

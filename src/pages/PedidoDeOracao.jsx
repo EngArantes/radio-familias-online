@@ -73,7 +73,7 @@ const PedidoDeOracao = () => {
       <header className="oracao__cabecalho">
         <h1>Pedido de oração</h1>
         <p>
-          Conte conosco — escreva seu pedido e nossa equipe estará
+          Conte conosco - escreva seu pedido e nossa equipe estará
           intercedendo por você e sua família.
         </p>
       </header>

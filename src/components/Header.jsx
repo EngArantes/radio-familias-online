@@ -49,9 +49,17 @@ function Header() {
   }, [isMenuOpen]);
 
   // Fecha o menu ao clicar fora do header
+  // (usa 'click' com verificação de origem: ignora o clique que ABRIU o menu,
+  // que borbulha do próprio botão até o document no mesmo toque)
   useEffect(() => {
     if (!isMenuOpen) return undefined;
     const onClick = (event) => {
+      if (
+        menuButtonRef.current &&
+        menuButtonRef.current.contains(event.target)
+      ) {
+        return;
+      }
       if (headerRef.current && !headerRef.current.contains(event.target)) {
         setIsMenuOpen(false);
       }
@@ -101,7 +109,10 @@ function Header() {
             ref={menuButtonRef}
             type="button"
             className={`menu-button${isMenuOpen ? ' menu-button--open' : ''}`}
-            onClick={toggleMenu}
+            onClick={(event) => {
+              event.stopPropagation();
+              toggleMenu();
+            }}
             aria-label={isMenuOpen ? 'Fechar menu' : 'Abrir menu'}
             aria-expanded={isMenuOpen}
             aria-controls="menu-principal"
